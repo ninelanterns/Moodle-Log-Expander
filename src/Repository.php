@@ -75,7 +75,7 @@ class Repository extends PhpObj {
      */
     public function readCourse($id) {
         $model = $this->readObject($id, 'course');
-        $model->url = $this->cfg->wwwroot.($id > 0 ? '/course.php?id=' . $id : '');
+        $model->url = $this->cfg->wwwroot.($id > 0 ? '/course/view.php?id=' . $id : '');
         return $model;
     }
 
@@ -89,7 +89,7 @@ class Repository extends PhpObj {
         $model->url = $this->cfg->wwwroot;
         return $model;
     }
-    
+
     /**
      * Reads a discussion from the store with the given id.
      * @param String $id
@@ -100,7 +100,7 @@ class Repository extends PhpObj {
         $model->url = $this->cfg->wwwroot . '/mod/forum/discuss.php?d=' . $id;
         return $model;
     }
-    
+
     /**
      * Reads the Moodle release number.
      * @return String
