@@ -68,9 +68,9 @@ class EventTest extends PhpUnitTestCase {
 
     private function assertCourse($input, $output) {
         $this->assertRecord($input, $output);
-        $this->assertEquals($this->cfg->wwwroot . '/course.php?id=' . $output->id, $output->url);
+        $this->assertEquals($this->cfg->wwwroot . '/course/view.php?id=' . $output->id, $output->url);
     }
-    
+
     protected function assertModule($input, $output, $type) {
         $this->assertRecord($input, $output);
         $this->assertEquals($this->cfg->wwwroot . '/mod/'.$type.'/view.php?id=' . $output->id, $output->url);
@@ -80,7 +80,7 @@ class EventTest extends PhpUnitTestCase {
         $this->assertRecord($input, $output);
         $this->assertEquals($this->cfg->wwwroot . '/mod/quiz/attempt.php?attempt=' . $output->id, $output->url);
     }
-    
+
     protected function assertDiscussion($input, $output) {
         $this->assertRecord($input, $output);
         $this->assertEquals($this->cfg->wwwroot . '/mod/forum/discuss.php?d=' . $output->id, $output->url);
