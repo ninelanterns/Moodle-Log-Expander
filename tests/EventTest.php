@@ -66,13 +66,13 @@ class EventTest extends PhpUnitTestCase {
         $this->assertEquals($this->cfg->wwwroot, $output->url);
     }
 
-    private function assertCourse($output) {
-        $this->assertRecord("No input.", $output);
+    private function assertCourse($input, $output) {
+        $this->assertRecord($input, $output);
         $this->assertEquals($this->cfg->wwwroot . '/course/view.php?id=' . $output->id, $output->url);
     }
 
-    private function assertSite($input, $output) {
-        $this->assertRecord($input, $output);
+    private function assertSite($output) {
+        $this->assertRecord("No input.", $output);
         $this->assertEquals($this->cfg->wwwroot, $output->url);
     }
 
