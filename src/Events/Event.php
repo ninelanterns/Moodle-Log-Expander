@@ -25,6 +25,7 @@ class Event extends PhpObj {
             'relateduser' => $opts['relateduserid'] < 1 ? null : $this->repo->readUser($opts['relateduserid']),
             'course' => $this->repo->readCourse($opts['courseid']),
             'app' => $this->repo->readCourse(1),
+            'site' => $this->repo->readSite(),
             'info' => (object) [
                 'https://moodle.org/' => $this->repo->readRelease(),
                 'https://github.com/LearningLocker/Moodle-Log-Expander' => $version,
