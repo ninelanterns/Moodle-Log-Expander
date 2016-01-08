@@ -121,7 +121,7 @@
     "completionnotify":"0",
     "cacherev":"1439288447",
     "type":"course",
-    "url":"http:\/\/localhost\/moodle\/course.php?id=1"
+    "url":"http:\/\/localhost\/moodle"
   },
   "info":{
     "https:\/\/moodle.org\/":"2.9+ (Build: 20150625)",
