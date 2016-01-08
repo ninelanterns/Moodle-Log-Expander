@@ -72,7 +72,6 @@ class EventTest extends PhpUnitTestCase {
     }
 
     private function assertSite($output) {
-        $this->assertRecord("No input.", $output);
         $this->assertEquals($this->cfg->wwwroot, $output->url);
     }
 
