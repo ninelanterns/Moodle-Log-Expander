@@ -73,7 +73,6 @@ class EventTest extends PhpUnitTestCase {
 
     private function assertSite($input, $output) {
         $this->assertEquals($this->cfg->wwwroot, $output->url);
-        $this->assertEquals($input, $output->id);
         $this->assertEquals('site', $output->type);
     }
 
