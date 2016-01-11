@@ -116,6 +116,7 @@ class Repository extends PhpObj {
     public function readSite() {
         $model = $this->readCourse(1);
         $model->url = $this->cfg->wwwroot;
+        $model->type = "site";
         return $model;
     }
 }
