@@ -69,6 +69,16 @@ class Repository extends PhpObj {
     }
 
     /**
+     * Reads quiz grade metadata from the store with the given quiz id.
+     * @param String $id
+     * @return PhpObj
+     */
+    public function readGradeitems($id) {
+        $model = $this->readStore('grade_items', ['itemmodule' => 'quiz', $id]);
+        return $model;
+    }
+
+    /**
      * Reads a course from the store with the given id.
      * @param String $id
      * @return PhpObj

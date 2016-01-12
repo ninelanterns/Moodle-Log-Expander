@@ -8,10 +8,8 @@ class AttemptEvent extends Event {
      * @override Event
      */
     public function read(array $opts) {
-        global $DB;
         $attempt = $this->repo->readAttempt($opts['objectid']);
-
-        $gradeitems = $DB->get_record('grade_items', array('itemmodule' => 'quiz', 'iteminstance' =>$attempt->quiz));
+        $gradeitems = $this->repo->readGradeitems($attempt->quiz));
 
         return array_merge(parent::read($opts), [
             'attempt' => $attempt,
