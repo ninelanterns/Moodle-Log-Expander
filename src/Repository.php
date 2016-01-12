@@ -73,7 +73,7 @@ class Repository extends PhpObj {
      * @param String $id
      * @return PhpObj
      */
-    public function readGradeitems($id) {
+    public function readGradeItems($id) {
         $model = $this->readStore('grade_items', ['itemmodule' => 'quiz', $id]);
         return $model;
     }
