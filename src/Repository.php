@@ -108,4 +108,15 @@ class Repository extends PhpObj {
     public function readRelease() {
         return $this->cfg->release;
     }
+
+    /**
+     * Reads the Moodle site
+     * @return PhpObj
+     */
+    public function readSite() {
+        $model = $this->readCourse(1);
+        $model->url = $this->cfg->wwwroot;
+        $model->type = "site";
+        return $model;
+    }
 }

@@ -45,7 +45,7 @@ class EventTest extends PhpUnitTestCase {
         $this->assertUser($input['userid'], $output['user']);
         $this->assertUser($input['relateduserid'], $output['relateduser']);
         $this->assertCourse($input['courseid'], $output['course']);
-        $this->assertCourse(1, $output['app']);
+        $this->assertSite($input, $output['app']);
         $this->assertEquals($input, $output['event']);
         $this->assertInfo($input, $output['info']);
     }
@@ -69,6 +69,11 @@ class EventTest extends PhpUnitTestCase {
     private function assertCourse($input, $output) {
         $this->assertRecord($input, $output);
         $this->assertEquals($this->cfg->wwwroot . '/course/view.php?id=' . $output->id, $output->url);
+    }
+
+    private function assertSite($input, $output) {
+        $this->assertEquals($this->cfg->wwwroot, $output->url);
+        $this->assertEquals('site', $output->type);
     }
 
     protected function assertModule($input, $output, $type) {
