@@ -22,8 +22,8 @@ class AttemptEventTest extends EventTest {
         parent::assertOutput($input, $output);
         $this->assertModule(1, $output['module'], 'quiz');
         $this->assertAttempt($input['objectid'], $output['attempt']);
-        $this->assertEquals(5, $output['gradeitems']['gradepass']);
-        $this->assertEquals(5, $output['gradeitems']['grademax']);
-        $this->assertEquals(0, $output['gradeitems']['grademin']);
+        $this->assertEquals(5, $output['gradeitems']->gradepass);
+        $this->assertEquals(5, $output['gradeitems']->grademax);
+        $this->assertEquals(0, $output['gradeitems']->grademin);
     }
 }
