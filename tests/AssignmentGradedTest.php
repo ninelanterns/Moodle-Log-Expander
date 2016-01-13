@@ -26,6 +26,6 @@ class AssignmentGradedTest extends EventTest {
         $this->assertEquals(5, $output['grade_items']->gradepass);
         $this->assertEquals(5, $output['grade_items']->grademax);
         $this->assertEquals(0, $output['grade_items']->grademin);
-        $this->assertEquals('<p>test comment</p>', $output['gradecomment']);
+        $this->assertEquals('<p>test comment</p>', $output['grade_comment']);
     }
 }
