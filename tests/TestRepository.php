@@ -32,7 +32,8 @@ class TestRepository extends MoodleRepository {
             'scorm' => '1',
             'grademax' => '5.00000',
             'grademin' => '0.00000',
-            'gradepass' => '5.00000'
+            'gradepass' => '5.00000',
+            'commenttext' => '<p>test comment</p>'
         ];
     }
 
