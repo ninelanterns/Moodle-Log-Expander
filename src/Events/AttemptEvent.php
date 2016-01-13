@@ -14,7 +14,7 @@ class AttemptEvent extends Event {
         return array_merge(parent::read($opts), [
             'attempt' => $attempt,
             'module' => $this->repo->readModule($attempt->quiz, 'quiz'),
-            'gradeitems' => $grade_items
+            'grade_items' => $grade_items
         ]);
     }
 }

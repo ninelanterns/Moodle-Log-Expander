@@ -248,8 +248,8 @@
         "url": "http:\/\/localhost\/moodle\/mod\/assign\/view.php?id=12",
         "type": "mod_assign"
     },
-    "gradecomment": "Good job Jimmy! Use a spell checker next time though.",
-    "gradeitems": {
+    "grade_comment": "Good job Jimmy! Use a spell checker next time though.",
+    "grade_items": {
         "id":"2",
         "courseid":"2",
         "categoryid":"1",

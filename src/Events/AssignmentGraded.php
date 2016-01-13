@@ -13,8 +13,8 @@ class AssignmentGraded extends Event {
         $grade_items = $this->repo->readGradeItems($grade->assignment, 'assign');
         return array_merge(parent::read($opts), [
             'grade' => $grade,
-            'gradecomment' => $grade_comment,
-            'gradeitems' => $grade_items,
+            'grade_comment' => $grade_comment,
+            'grade_items' => $grade_items,
             'graded_user' => $this->repo->readUser($grade->userid),
             'module' => $this->repo->readModule($grade->assignment, 'assign'),
         ]);
