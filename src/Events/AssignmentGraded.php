@@ -10,7 +10,7 @@ class AssignmentGraded extends Event {
     public function read(array $opts) {
         $grade = $this->repo->readObject($opts['objectid'], $opts['objecttable']);
         $grade_comment = $this->repo->readGradeComment($grade->id, $grade->assignment)->commenttext;
-        $grade_items = $this->repo->readGradeItems($attempt->quiz, 'assign');
+        $grade_items = $this->repo->readGradeItems($grade->assignment, 'assign');
         return array_merge(parent::read($opts), [
             'grade' => $grade,
             'gradecomment' => $grade_comment,
