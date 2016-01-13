@@ -9,7 +9,7 @@ class AttemptEvent extends Event {
      */
     public function read(array $opts) {
         $attempt = $this->repo->readAttempt($opts['objectid']);
-        $grade_items = $this->repo->readGradeItems($attempt->quiz);
+        $grade_items = $this->repo->readGradeItems($attempt->quiz, 'quiz');
 
         return array_merge(parent::read($opts), [
             'attempt' => $attempt,
