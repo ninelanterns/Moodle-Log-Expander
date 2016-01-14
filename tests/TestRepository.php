@@ -38,6 +38,26 @@ class TestRepository extends MoodleRepository {
     }
 
     /**
+     * Reads an array of objects from the store with the given type and query.
+     * @param String $type
+     * @param [String => Mixed] $query
+     * @return PhpArr
+     * @override MoodleRepository
+     */
+    protected function readStoreMultiple($type, array $query) {
+        return [
+            (object) [
+                'id' => 1,
+                'questionid' => 2
+            ],
+            (object) [
+                'id' => 2,
+                'questionid' => 1
+            ]
+        ];
+    }
+
+    /**
      * Reads an object from the store with the given id.
      * @param string $id
      * @param string $type
