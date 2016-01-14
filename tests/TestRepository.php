@@ -46,11 +46,11 @@ class TestRepository extends MoodleRepository {
      */
     protected function readStoreMultiple($type, array $query) {
         return [
-            (object) [
+            "1" => (object) [
                 'id' => "1",
                 'questionid' => "2"
             ],
-            (object) [
+            "2" => (object) [
                 'id' => "2",
                 'questionid' => "1"
             ]
