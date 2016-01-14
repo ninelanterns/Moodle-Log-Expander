@@ -16,13 +16,24 @@ class Repository extends PhpObj {
     }
 
     /**
-     * Reads an object from the store with the given id.
+     * Reads an object from the store with the given type and query.
      * @param String $type
      * @param [String => Mixed] $query
      * @return PhpObj
      */
     protected function readStore($type, array $query) {
         $model = $this->store->get_record($type, $query);
+        return $model;
+    }
+
+    /**
+     * Reads an array of objects from the store with the given type and query.
+     * @param String $type
+     * @param [String => Mixed] $query
+     * @return PhpArr
+     */
+    protected function readStoreMultiple($type, array $query) {
+        $model = $this->store->get_records($type, $query);
         return $model;
     }
 
@@ -69,13 +80,47 @@ class Repository extends PhpObj {
     }
 
     /**
+     * Reads question attempts from the store with the given quiz attempt id.
+     * @param String $id
+     * @return PhpArr
+     */
+    public function readQuestionAttempts($id) {
+        $questionAttempts = $this->readStoreMultiple('question_attempts', ['questionusageid' => $id]);
+        foreach ($questionAttempts as $questionIndex => $questionAttempt) {
+            $questionAttemptSteps = $this->readStoreMultiple('question_attempt_steps', ['questionattemptid' => $questionAttempt->id]);
+            foreach ($questionAttemptSteps as $stepIndex => $questionAttemptStep) {
+                $questionAttemptStep->data = $this->readStoreMultiple('question_attempt_step_data', ['attemptstepid' => $questionAttemptStep->id]);
+            }
+            $questionAttempt->steps = $questionAttemptSteps;
+        }
+        return $questionAttempts;
+    }
+
+    /**
+     * Reads questions from the store with the given quiz id.
+     * @param String $id
+     * @return PhpArr
+     */
+    public function readQuestions($quizId) {
+        $quizSlots = $this->readStoreMultiple('quiz_slots', ['quizid' => $quizId]);
+        $questions = [];
+        foreach ($quizSlots as $index => $quizSlot) {
+            $question = $this->readStore('question', ['id' => $quizSlot->questionid]);
+            $question->answers = $this->readStoreMultiple('question_answers', ['question' => $question->id]);
+            $questions[$question->id] = $question;
+        }
+
+        return $questions;
+    }
+
+    /**
      * Reads  grade metadata from the store with the given type and id.
      * @param String $id
+     * @param String $type
      * @return PhpObj
      */
     public function readGradeItems($id, $type) {
-        $model = $this->readStore('grade_items', ['itemmodule' => $type, 'iteminstance' => $id]);
-        return $model;
+        return $this->readStore('grade_items', ['itemmodule' => $type, 'iteminstance' => $id]);
     }
 
     /**
