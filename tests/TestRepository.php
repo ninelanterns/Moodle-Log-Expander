@@ -9,7 +9,7 @@ class TestRepository extends MoodleRepository {
      * @return php_obj
      * @override MoodleRepository
      */
-    protected function readStore($type, array $query) {
+    protected function readStoreRecord($type, array $query) {
         return (object) [
             'id' => '1',
             'username' => 'test_username',
@@ -44,7 +44,7 @@ class TestRepository extends MoodleRepository {
      * @return PhpArr
      * @override MoodleRepository
      */
-    protected function readStoreMultiple($type, array $query) {
+    protected function readStoreRecords($type, array $query) {
         return [
             "1" => (object) [
                 'id' => "1",
