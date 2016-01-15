@@ -21,7 +21,7 @@ class Repository extends PhpObj {
      * @param [String => Mixed] $query
      * @return PhpObj
      */
-    protected function readStore($type, array $query) {
+    protected function readStoreRecord($type, array $query) {
         $model = $this->store->get_record($type, $query);
         return $model;
     }
@@ -32,7 +32,7 @@ class Repository extends PhpObj {
      * @param [String => Mixed] $query
      * @return PhpArr
      */
-    protected function readStoreMultiple($type, array $query) {
+    protected function readStoreRecords($type, array $query) {
         $model = $this->store->get_records($type, $query);
         return $model;
     }
@@ -44,7 +44,7 @@ class Repository extends PhpObj {
      * @return PhpObj
      */
     public function readObject($id, $type) {
-        $model = $this->readStore($type, ['id' => $id]);
+        $model = $this->readStoreRecord($type, ['id' => $id]);
         $model->type = $type;
         return $model;
     }
@@ -57,8 +57,8 @@ class Repository extends PhpObj {
      */
     public function readModule($id, $type) {
         $model = $this->readObject($id, $type);
-        $module = $this->readStore('modules', ['name' => $type]);
-        $course_module = $this->readStore('course_modules', [
+        $module = $this->readStoreRecord('modules', ['name' => $type]);
+        $course_module = $this->readStoreRecord('course_modules', [
             'instance' => $id,
             'module' => $module->id,
             'course' => $model->course
@@ -85,11 +85,11 @@ class Repository extends PhpObj {
      * @return PhpArr
      */
     public function readQuestionAttempts($id) {
-        $questionAttempts = $this->readStoreMultiple('question_attempts', ['questionusageid' => $id]);
+        $questionAttempts = $this->readStoreRecords('question_attempts', ['questionusageid' => $id]);
         foreach ($questionAttempts as $questionIndex => $questionAttempt) {
-            $questionAttemptSteps = $this->readStoreMultiple('question_attempt_steps', ['questionattemptid' => $questionAttempt->id]);
+            $questionAttemptSteps = $this->readStoreRecords('question_attempt_steps', ['questionattemptid' => $questionAttempt->id]);
             foreach ($questionAttemptSteps as $stepIndex => $questionAttemptStep) {
-                $questionAttemptStep->data = $this->readStoreMultiple('question_attempt_step_data', ['attemptstepid' => $questionAttemptStep->id]);
+                $questionAttemptStep->data = $this->readStoreRecords('question_attempt_step_data', ['attemptstepid' => $questionAttemptStep->id]);
             }
             $questionAttempt->steps = $questionAttemptSteps;
         }
@@ -102,11 +102,11 @@ class Repository extends PhpObj {
      * @return PhpArr
      */
     public function readQuestions($quizId) {
-        $quizSlots = $this->readStoreMultiple('quiz_slots', ['quizid' => $quizId]);
+        $quizSlots = $this->readStoreRecords('quiz_slots', ['quizid' => $quizId]);
         $questions = [];
         foreach ($quizSlots as $index => $quizSlot) {
-            $question = $this->readStore('question', ['id' => $quizSlot->questionid]);
-            $question->answers = $this->readStoreMultiple('question_answers', ['question' => $question->id]);
+            $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
+            $question->answers = $this->readStoreRecords('question_answers', ['question' => $question->id]);
             $questions[$question->id] = $question;
         }
 
@@ -120,7 +120,7 @@ class Repository extends PhpObj {
      * @return PhpObj
      */
     public function readGradeItems($id, $type) {
-        return $this->readStore('grade_items', ['itemmodule' => $type, 'iteminstance' => $id]);
+        return $this->readStoreRecord('grade_items', ['itemmodule' => $type, 'iteminstance' => $id]);
     }
 
     /**
@@ -129,7 +129,7 @@ class Repository extends PhpObj {
      * @return PhpObj
      */
     public function readGradeComment($grade_id, $assignment_id) {
-        $model = $this->readStore(
+        $model = $this->readStoreRecord(
             'assignfeedback_comments', 
             [
                 'assignment' => $assignment_id, 
