@@ -26,6 +26,8 @@ class AttemptEventTest extends EventTest {
         $this->assertEquals(5, $output['grade_items']->grademax);
         $this->assertEquals(0, $output['grade_items']->grademin);
         $this->assertEquals("1", $output['attempt']->questions["1"]->id);
+        $this->assertEquals("2", $output['attempt']->questions["1"]->steps["2"]->id);
+        $this->assertEquals("2", $output['attempt']->questions["1"]->steps["1"]->data["2"]->id);
         $this->assertEquals("1", $output['questions']["1"]->id);
     }
 }
