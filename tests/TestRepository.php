@@ -64,7 +64,7 @@ class TestRepository extends MoodleRepository {
      * @return php_obj
      */
     public function readObject($id, $type) {
-        $model = $this->readStore($type, ['id' => $id]);
+        $model = $this->readStoreRecord($type, ['id' => $id]);
         $model->id = $id;
         return $model;
     }
