@@ -33,7 +33,8 @@ class TestRepository extends MoodleRepository {
             'grademax' => '5.00000',
             'grademin' => '0.00000',
             'gradepass' => '5.00000',
-            'commenttext' => '<p>test comment</p>'
+            'commenttext' => '<p>test comment</p>',
+            'questionid' => '1'
         ];
     }
 
@@ -45,16 +46,11 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecords($type, array $query) {
-        return [
-            "1" => (object) [
-                'id' => "1",
-                'questionid' => "2"
-            ],
-            "2" => (object) [
-                'id' => "2",
-                'questionid' => "1"
-            ]
-        ];
+        $record1 = $this->readStoreRecord();
+        $record2 = $this->readStoreRecord();
+        $record2->id = '2';
+        $record2->questionid = '1';
+        return [$record1, $record2];
     }
 
     /**
