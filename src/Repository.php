@@ -107,6 +107,7 @@ class Repository extends PhpObj {
         foreach ($quizSlots as $index => $quizSlot) {
             $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
             $question->answers = $this->readStoreRecords('question_answers', ['question' => $question->id]);
+            $question->url = $this->cfg->wwwroot . '/mod/question/question.php?id='.$question->id;
             $questions[$question->id] = $question;
         }
 
