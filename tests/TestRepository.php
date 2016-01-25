@@ -9,7 +9,7 @@ class TestRepository extends MoodleRepository {
      * @return php_obj
      * @override MoodleRepository
      */
-    protected function readStore($type, array $query) {
+    protected function readStoreRecord($type, array $query) {
         return (object) [
             'id' => '1',
             'username' => 'test_username',
@@ -33,7 +33,26 @@ class TestRepository extends MoodleRepository {
             'grademax' => '5.00000',
             'grademin' => '0.00000',
             'gradepass' => '5.00000',
-            'commenttext' => '<p>test comment</p>'
+            'commenttext' => '<p>test comment</p>',
+            'questionid' => '1'
+        ];
+    }
+
+    /**
+     * Reads an array of objects from the store with the given type and query.
+     * @param String $type
+     * @param [String => Mixed] $query
+     * @return PhpArr
+     * @override MoodleRepository
+     */
+    protected function readStoreRecords($type, array $query) {
+        $record1 = $this->readStoreRecord($type, $query);
+        $record2 = $this->readStoreRecord($type, $query);
+        $record2->id = '2';
+        $record2->questionid = '1';
+        return [
+            "1" => $record1, 
+            "2" => $record2
         ];
     }
 
@@ -44,7 +63,7 @@ class TestRepository extends MoodleRepository {
      * @return php_obj
      */
     public function readObject($id, $type) {
-        $model = $this->readStore($type, ['id' => $id]);
+        $model = $this->readStoreRecord($type, ['id' => $id]);
         $model->id = $id;
         return $model;
     }
