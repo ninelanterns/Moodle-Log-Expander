@@ -46,8 +46,8 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecords($type, array $query) {
-        $record1 = $this->readStoreRecord();
-        $record2 = $this->readStoreRecord();
+        $record1 = $this->readStoreRecord($type, $query);
+        $record2 = $this->readStoreRecord($type, $query);
         $record2->id = '2';
         $record2->questionid = '1';
         return [$record1, $record2];
