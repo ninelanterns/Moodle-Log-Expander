@@ -10,7 +10,7 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecord($type, array $query) {
-         $reponse = [
+         $response = [
             'id' => '1',
             'username' => 'test_username',
             'lang' => 'en',
@@ -46,7 +46,7 @@ class TestRepository extends MoodleRepository {
         ];
 
         if ($type == 'question_attempt_steps') {
-            $reponse['state'] = 'gradedright';
+            $response['state'] = 'gradedright';
         }
 
         return (object) $response;
