@@ -64,7 +64,7 @@ class TestRepository extends MoodleRepository {
         $record2 = $this->readStoreRecord($type, $query);
         $record2->id = '2';
         $record2->questionid = '1';
-        $record2->sequencenumber = '2'
+        $record2->sequencenumber = '2';
         return [
             "1" => $record1, 
             "2" => $record2
