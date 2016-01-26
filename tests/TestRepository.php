@@ -10,7 +10,7 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecord($type, array $query) {
-        return (object) [
+         $reponse = [
             'id' => '1',
             'username' => 'test_username',
             'lang' => 'en',
@@ -20,6 +20,7 @@ class TestRepository extends MoodleRepository {
             'intro' => 'test_intro',
             'timestart' => 1433946701,
             'timefinish' => 1433946702,
+            'timestamp' => 1433946702,
             'state' => 'finished',
             'course' => '1',
             'sumgrades' => '1',
@@ -34,8 +35,21 @@ class TestRepository extends MoodleRepository {
             'grademin' => '0.00000',
             'gradepass' => '5.00000',
             'commenttext' => '<p>test comment</p>',
-            'questionid' => '1'
+            'questionid' => '1',
+            'questiontext' => '<p>test question</p>',
+            'maxmark' => '5.00000',
+            'fraction' => '1.0000',
+            'answer' => 'test answer',
+            'rightanswer' => 'test answer',
+            'responsesummary' => 'test answer',
+            'sequencenumber' => 1
         ];
+
+        if ($type == 'question_attempt_steps') {
+            $reponse['state'] = 'gradedright';
+        }
+
+        return (object) $response;
     }
 
     /**
@@ -50,6 +64,7 @@ class TestRepository extends MoodleRepository {
         $record2 = $this->readStoreRecord($type, $query);
         $record2->id = '2';
         $record2->questionid = '1';
+        $record2->sequencenumber = '2'
         return [
             "1" => $record1, 
             "2" => $record2
