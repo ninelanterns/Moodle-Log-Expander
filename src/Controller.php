@@ -63,4 +63,21 @@ class Controller extends PhpObj {
             return null;
         }
     }
+
+    /**
+     * Creates a new event.
+     * @param [String => Mixed] $events
+     * @return [String => Mixed]
+     */
+    public function createEvents(array $events) {
+        $results = [];
+        foreach ($events as $index => $opts) {
+            $route = isset($opts['eventname']) ? $opts['eventname'] : '';
+            if (isset(static::$routes[$route]) && ($opts['userid'] > 0 || $opts['relateduserid'] > 0)) {
+                $event = '\LogExpander\Events\\'.static::$routes[$route];
+                array_push($results , (new $event($this->repo))->read($opts));
+            }
+        }
+        return $results;
+    }
 }
