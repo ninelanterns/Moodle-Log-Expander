@@ -29,6 +29,7 @@ class EventTest extends PhpUnitTestCase {
         $input = $this->constructInput();
         $output = $this->event->read($input);
         $this->assertOutput($input, $output);
+        $this->createExampleFile($output);
     }
 
     protected function constructInput() {
@@ -89,5 +90,12 @@ class EventTest extends PhpUnitTestCase {
     protected function assertDiscussion($input, $output) {
         $this->assertRecord($input, $output);
         $this->assertEquals($this->cfg->wwwroot . '/mod/forum/discuss.php?d=' . $output->id, $output->url);
+    }
+
+    protected function createExampleFile($output) {
+        $class_array = explode('\\', get_class($this));
+        $event_name = str_replace('Test', '', array_pop($class_array));
+        $example_file = __DIR__.'/../docs/examples/'.$event_name.'.json';
+        file_put_contents($example_file, json_encode($output, JSON_PRETTY_PRINT));
     }
 }
