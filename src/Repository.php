@@ -140,6 +140,33 @@ class Repository extends PhpObj {
         return $model;
     }
     
+    /**
+     * Reads a feedback attempt from the store with the given id.
+     * @param String $id
+     * @return PhpObj
+     */
+    public function readFeedbackAttempt($id) {
+        $model = $this->readObject($id, 'feedback_completed');
+        $model->url = $this->cfg->wwwroot . '/mod/feedback/complete.php?id='.$id;
+        $model->name = 'Attempt '.$id;
+        $model->responses = $this->readStoreRecords('feedback_value', ['completed' => $id]);
+        return $model;
+    }
+
+    /**
+     * Reads questions from the store with the given feedback id.
+     * @param String $id
+     * @return PhpArr
+     */
+    public function readFeedbackQuestions($id) {
+        $questions = $this->readStoreRecords('feedback_item', ['feedback' => $id]);
+        foreach ($questions as $index => $question) {
+            $question->temaplate = $this->readStoreRecord('feedback_template', ['id' => $question->temaplate]);
+            $question->url = $this->cfg->wwwroot . '/mod/feedback/edit_item.php?id='.$question->id;
+            $questions[$index] = $question;
+        }
+        return $questions;
+    }
 
     /**
      * Reads a course from the store with the given id.

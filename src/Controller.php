@@ -28,6 +28,7 @@ class Controller extends PhpObj {
         '\mod_survey\event\course_module_viewed' => 'ModuleEvent',
         '\mod_url\event\course_module_viewed' => 'ModuleEvent',
         '\mod_facetoface\event\course_module_viewed' => 'ModuleEvent',
+        '\mod_feedback\event\course_module_viewed' => 'ModuleEvent',
         '\mod_quiz\event\attempt_abandoned' => 'AttemptEvent',
         '\mod_quiz\event\attempt_preview_started' => 'AttemptEvent',
         '\mod_quiz\event\attempt_reviewed' => 'AttemptEvent',
@@ -39,6 +40,7 @@ class Controller extends PhpObj {
         '\core\event\user_created' => 'Event',
         '\core\event\user_enrolment_created' => 'Event',
         '\mod_scorm\event\sco_launched' => 'ScormLaunched',
+        '\mod_feedback\event\response_submitted' => 'FeedbackSubmitted'
     ];
 
     /**
