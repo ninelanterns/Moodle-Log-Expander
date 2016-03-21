@@ -9,8 +9,8 @@ class TestRepository extends MoodleRepository {
      * @return php_obj
      * @override MoodleRepository
      */
-    protected function readStore($type, array $query) {
-        return (object) [
+    protected function readStoreRecord($type, array $query) {
+         $response = [
             'id' => '1',
             'username' => 'test_username',
             'lang' => 'en',
@@ -20,6 +20,8 @@ class TestRepository extends MoodleRepository {
             'intro' => 'test_intro',
             'timestart' => 1433946701,
             'timefinish' => 1433946702,
+            'timestamp' => 1433946702,
+            'timecreated' => 1433946702,
             'state' => 'finished',
             'course' => '1',
             'sumgrades' => '1',
@@ -32,7 +34,42 @@ class TestRepository extends MoodleRepository {
             'scorm' => '1',
             'grademax' => '5.00000',
             'grademin' => '0.00000',
-            'gradepass' => '5.00000'
+            'gradepass' => '5.00000',
+            'commenttext' => '<p>test comment</p>',
+            'questionid' => '1',
+            'questiontext' => '<p>test question</p>',
+            'qtype' => 'multichoice',
+            'maxmark' => '5.00000',
+            'fraction' => '1.0000',
+            'answer' => 'test answer',
+            'rightanswer' => 'test answer',
+            'responsesummary' => 'test answer',
+            'sequencenumber' => 1
+        ];
+
+        if ($type == 'question_attempt_steps') {
+            $response['state'] = 'gradedright';
+        }
+
+        return (object) $response;
+    }
+
+    /**
+     * Reads an array of objects from the store with the given type and query.
+     * @param String $type
+     * @param [String => Mixed] $query
+     * @return PhpArr
+     * @override MoodleRepository
+     */
+    protected function readStoreRecords($type, array $query) {
+        $record1 = $this->readStoreRecord($type, $query);
+        $record2 = $this->readStoreRecord($type, $query);
+        $record2->id = '2';
+        $record2->questionid = '1';
+        $record2->sequencenumber = '2';
+        return [
+            "1" => $record1, 
+            "2" => $record2
         ];
     }
 
@@ -43,7 +80,7 @@ class TestRepository extends MoodleRepository {
      * @return php_obj
      */
     public function readObject($id, $type) {
-        $model = $this->readStore($type, ['id' => $id]);
+        $model = $this->readStoreRecord($type, ['id' => $id]);
         $model->id = $id;
         return $model;
     }
