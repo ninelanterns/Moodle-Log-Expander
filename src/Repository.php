@@ -161,7 +161,7 @@ class Repository extends PhpObj {
     public function readFeedbackQuestions($id) {
         $questions = $this->readStoreRecords('feedback_item', ['feedback' => $id]);
         foreach ($questions as $index => $question) {
-            $question->temaplate = $this->readStoreRecord('feedback_template', ['id' => $question->temaplate]);
+            $question->template = $this->readStoreRecord('feedback_template', ['id' => $question->template]);
             $question->url = $this->cfg->wwwroot . '/mod/feedback/edit_item.php?id='.$question->id;
             $questions[$index] = $question;
         }

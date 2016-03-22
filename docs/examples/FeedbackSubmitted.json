@@ -241,7 +241,7 @@
             "dependitem": "0",
             "dependvalue": "",
             "options": "",
-            "temaplate": false,
+            "template": false,
             "url": "http:\/\/localhost:8888\/moodle\/mod\/feedback\/edit_item.php?id=1"
         },
         "2": {
@@ -258,7 +258,7 @@
             "dependitem": "0",
             "dependvalue": "",
             "options": "",
-            "temaplate": false,
+            "template": false,
             "url": "http:\/\/localhost:8888\/moodle\/mod\/feedback\/edit_item.php?id=2"
         },
         "3": {
@@ -275,7 +275,7 @@
             "dependitem": "0",
             "dependvalue": "",
             "options": "",
-            "temaplate": false,
+            "template": false,
             "url": "http:\/\/localhost:8888\/moodle\/mod\/feedback\/edit_item.php?id=3"
         }
     },
