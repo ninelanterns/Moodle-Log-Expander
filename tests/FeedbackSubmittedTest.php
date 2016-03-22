@@ -1,5 +1,5 @@
 <?php namespace LogExpander\Tests;
-use \LogExpander\Events\FeedbackSubitted as Event;
+use \LogExpander\Events\FeedbackSubmitted as Event;
 
 class FeedbackSubittedTest extends EventTest {
     /**
