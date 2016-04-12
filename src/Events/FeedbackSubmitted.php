@@ -1,6 +1,6 @@
 <?php namespace LogExpander\Events;
 
-class FeedbackSubmitted extends ModuleEvent {
+class FeedbackSubmitted extends Event {
     /**
      * Reads data for an event.
      * @param [String => Mixed] $opts
@@ -9,28 +9,12 @@ class FeedbackSubmitted extends ModuleEvent {
      */
     public function read(array $opts) {
 
-        $parent = parent::read($opts);
-        if (is_null($parent)) {
-            return null;
-        }
-
         $attempt = $this->repo->readFeedbackAttempt($opts['objectid']); 
-        if ($attempt === false) {
-            return null;
-        }
-        $questions = $this->repo->readFeedbackQuestions($attempt->feedback);
-        $module = $this->repo->readModule($attempt->feedback, 'feedback');
-        if (
-            ($questions === false) 
-            || ($module === false) 
-        ){
-            return null;
-        }
 
         return array_merge(parent::read($opts), [
-            'questions' => $questions,
+            'module' => $this->repo->readModule($attempt->feedback, 'feedback'),
+            'questions' => $this->repo->readFeedbackQuestions($attempt->feedback),
             'attempt' => $attempt,
-            'module' => $module
         ]);
     }
 }
