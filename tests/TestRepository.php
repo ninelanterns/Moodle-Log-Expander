@@ -32,6 +32,8 @@ class TestRepository extends MoodleRepository {
             'forum' => '1',
             'type' => 'object',
             'scorm' => '1',
+            'feedback' => '1',
+            'template' => '1',
             'grademax' => '5.00000',
             'grademin' => '0.00000',
             'gradepass' => '5.00000',
