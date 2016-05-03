@@ -52,22 +52,7 @@ class Controller extends PhpObj {
     }
 
     /**
-     * Creates a new event.
-     * @param [String => Mixed] $opts
-     * @return [String => Mixed]
-     */
-    public function createEvent(array $opts) {
-        $route = isset($opts['eventname']) ? $opts['eventname'] : '';
-        if (isset(static::$routes[$route]) && ($opts['userid'] > 0 || $opts['relateduserid'] > 0)) {
-            $event = '\LogExpander\Events\\'.static::$routes[$route];
-            return (new $event($this->repo))->read($opts);
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Creates a new event.
+     * Creates new events.
      * @param [String => Mixed] $events
      * @return [String => Mixed]
      */
