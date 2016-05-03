@@ -45,6 +45,9 @@ class Repository extends PhpObj {
      */
     public function readObject($id, $type) {
         $model = $this->readStoreRecord($type, ['id' => $id]);
+        if ($model === false) {
+            throw new Exception('Object not found');
+        }
         $model->type = $type;
         return $model;
     }
@@ -57,12 +60,21 @@ class Repository extends PhpObj {
      */
     public function readModule($id, $type) {
         $model = $this->readObject($id, $type);
+        if ($model === false) {
+            throw new Exception('Object not found');
+        }
         $module = $this->readStoreRecord('modules', ['name' => $type]);
+        if ($module === false) {
+            throw new Exception('Module not found');
+        }
         $course_module = $this->readStoreRecord('course_modules', [
             'instance' => $id,
             'module' => $module->id,
             'course' => $model->course
         ]);
+        if ($course_module === false) {
+            throw new Exception('Course module not found');
+        }
         $model->url = $this->cfg->wwwroot . '/mod/'.$type.'/view.php?id=' . $course_module->id;
         return $model;
     }
@@ -74,6 +86,9 @@ class Repository extends PhpObj {
      */
     public function readAttempt($id) {
         $model = $this->readObject($id, 'quiz_attempts');
+        if ($model === false) {
+            throw new Exception('Object not found');
+        }
         $model->url = $this->cfg->wwwroot . '/mod/quiz/attempt.php?attempt='.$id;
         $model->name = 'Attempt '.$id;
         return $model;
@@ -86,6 +101,9 @@ class Repository extends PhpObj {
      */
     public function readQuestionAttempts($id) {
         $questionAttempts = $this->readStoreRecords('question_attempts', ['questionusageid' => $id]);
+        if ($questionAttempts === false) {
+            throw new Exception('Question attempt not found');
+        }
         foreach ($questionAttempts as $questionIndex => $questionAttempt) {
             $questionAttemptSteps = $this->readStoreRecords('question_attempt_steps', ['questionattemptid' => $questionAttempt->id]);
             foreach ($questionAttemptSteps as $stepIndex => $questionAttemptStep) {
@@ -103,6 +121,9 @@ class Repository extends PhpObj {
      */
     public function readQuestions($quizId) {
         $quizSlots = $this->readStoreRecords('quiz_slots', ['quizid' => $quizId]);
+        if ($quizSlots === false) {
+            throw new Exception('Quiz slots not found');
+        }
         $questions = [];
         foreach ($quizSlots as $index => $quizSlot) {
             $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
@@ -147,6 +168,9 @@ class Repository extends PhpObj {
      */
     public function readFeedbackAttempt($id) {
         $model = $this->readObject($id, 'feedback_completed');
+        if ($model === false) {
+            throw new Exception('Object not found');
+        }
         $model->url = $this->cfg->wwwroot . '/mod/feedback/complete.php?id='.$id;
         $model->name = 'Attempt '.$id;
         $model->responses = $this->readStoreRecords('feedback_value', ['completed' => $id]);
@@ -160,6 +184,9 @@ class Repository extends PhpObj {
      */
     public function readFeedbackQuestions($id) {
         $questions = $this->readStoreRecords('feedback_item', ['feedback' => $id]);
+        if ($questions === false) {
+            throw new Exception('Feedback item not found');
+        }
         foreach ($questions as $index => $question) {
             $question->template = $this->readStoreRecord('feedback_template', ['id' => $question->template]);
             $question->url = $this->cfg->wwwroot . '/mod/feedback/edit_item.php?id='.$question->id;
@@ -175,6 +202,9 @@ class Repository extends PhpObj {
      */
     public function readCourse($id) {
         $model = $this->readObject($id, 'course');
+        if ($model === false) {
+            throw new Exception('Object not found');
+        }
         $model->url = $this->cfg->wwwroot.($id > 0 ? '/course/view.php?id=' . $id : '');
         return $model;
     }
@@ -186,6 +216,9 @@ class Repository extends PhpObj {
      */
     public function readUser($id) {
         $model = $this->readObject($id, 'user');
+        if ($model === false) {
+            throw new Exception('Object not found');
+        }
         $model->url = $this->cfg->wwwroot;
         return $model;
     }
@@ -197,6 +230,9 @@ class Repository extends PhpObj {
      */
     public function readDiscussion($id) {
         $model = $this->readObject($id, 'forum_discussions');
+        if ($model === false) {
+            throw new Exception('Object not found');
+        }
         $model->url = $this->cfg->wwwroot . '/mod/forum/discuss.php?d=' . $id;
         return $model;
     }
