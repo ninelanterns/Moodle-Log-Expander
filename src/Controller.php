@@ -61,8 +61,13 @@ class Controller extends PhpObj {
         foreach ($events as $index => $opts) {
             $route = isset($opts['eventname']) ? $opts['eventname'] : '';
             if (isset(static::$routes[$route]) && ($opts['userid'] > 0 || $opts['relateduserid'] > 0)) {
-                $event = '\LogExpander\Events\\'.static::$routes[$route];
-                array_push($results , (new $event($this->repo))->read($opts));
+                try {
+                    $event = '\LogExpander\Events\\'.static::$routes[$route];
+                    array_push($results , (new $event($this->repo))->read($opts));
+                }
+                catch {
+                    // Error processing event; skip it. 
+                }
             }
         }
         return $results;
