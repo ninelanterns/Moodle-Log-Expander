@@ -1,5 +1,6 @@
 <?php namespace LogExpander;
 use \stdClass as PhpObj;
+use Exception;
 
 class Repository extends PhpObj {
     protected $store;
@@ -24,7 +25,7 @@ class Repository extends PhpObj {
     protected function readStoreRecord($type, array $query) {
         $model = $this->store->get_record($type, $query);
         if ($model === false) {
-            throw new Exception('Object not found');
+            throw new Exception('Record not found.');
         }
         return $model;
     }
@@ -37,9 +38,6 @@ class Repository extends PhpObj {
      */
     protected function readStoreRecords($type, array $query) {
         $model = $this->store->get_records($type, $query);
-        if ($model === false) {
-            throw new Exception('Object not found');
-        }
         return $model;
     }
 
@@ -111,10 +109,16 @@ class Repository extends PhpObj {
         $quizSlots = $this->readStoreRecords('quiz_slots', ['quizid' => $quizId]);
         $questions = [];
         foreach ($quizSlots as $index => $quizSlot) {
-            $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
-            $question->answers = $this->readStoreRecords('question_answers', ['question' => $question->id]);
-            $question->url = $this->cfg->wwwroot . '/mod/question/question.php?id='.$question->id;
-            $questions[$question->id] = $question;
+            try {
+                $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
+                $question->answers = $this->readStoreRecords('question_answers', ['question' => $question->id]);
+                $question->url = $this->cfg->wwwroot . '/mod/question/question.php?id='.$question->id;
+                $questions[$question->id] = $question;
+            }
+            catch (\Exception $e) {
+                // Question not found; maybe it was deleted since the event. 
+                // Don't add the question to the list, but also don't block the attempt event.
+            }
         }
 
         return $questions;

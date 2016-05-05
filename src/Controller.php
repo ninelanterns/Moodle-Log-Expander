@@ -65,7 +65,7 @@ class Controller extends PhpObj {
                     $event = '\LogExpander\Events\\'.static::$routes[$route];
                     array_push($results , (new $event($this->repo))->read($opts));
                 }
-                catch {
+                catch (\Exception $e) {
                     // Error processing event; skip it. 
                 }
             }
