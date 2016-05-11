@@ -1,11 +1,4 @@
-<?php 
-namespace {
-    function fullname($user) {
-        return $user->fullname;
-    }
-}
-
-namespace LogExpander\Tests;
+<?php namespace LogExpander\Tests;
 use \PHPUnit_Framework_TestCase as PhpUnitTestCase;
 use \LogExpander\Events\Event as Event;
 
