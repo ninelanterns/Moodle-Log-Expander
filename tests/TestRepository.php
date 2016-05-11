@@ -75,6 +75,10 @@ class TestRepository extends MoodleRepository {
         ];
     }
 
+    protected function fullname($user) {
+        return "test_fullname";
+    }
+
     /**
      * Reads an object from the store with the given id.
      * @param string $id

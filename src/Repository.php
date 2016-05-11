@@ -42,6 +42,15 @@ class Repository extends PhpObj {
     }
 
     /**
+     * Calls the Moodle core fullname function
+     * @param PHPObj $user
+     * @return Str
+     */
+    protected function fullname($user) {
+        return fullname($user);
+    }
+
+    /**
      * Reads an object from the store with the given id.
      * @param String $id
      * @param String $type
@@ -197,7 +206,7 @@ class Repository extends PhpObj {
     public function readUser($id) {
         $model = $this->readObject($id, 'user');
         $model->url = $this->cfg->wwwroot;
-        $model->fullname = fullname($model);
+        $model->fullname = $this->fullname($model);
         return $model;
     }
 
