@@ -52,7 +52,8 @@
     "firstnamephonetic":"",
     "middlename":"",
     "alternatename":"",
-    "type":"user"
+    "type":"user", 
+    "fullname": "Test User"
   },
   "relateduser":null,
   "course":{
