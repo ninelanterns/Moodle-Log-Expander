@@ -7,7 +7,7 @@
  */
 
 namespace LogExpander\Tests;
-use \LogExpander\Events\CourseCompleted as Event;
+use \LogExpander\Events\Event as Event;
 
 /**
  * Class CourseCompletedTest
@@ -29,9 +29,12 @@ class CourseCompletedTest extends EventTest
      */
     protected function constructInput() {
         return array_merge(parent::constructInput(), [
-            'objecttable' => 'page',
-            'objectid' => 1,
+            'objecttable' => null,
+            'objectid' => null,
             'eventname' => '\core\event\course_completed',
+            'action' =>'completed',
+            'target'=>'course',
+            'component'=>'core',
         ]);
     }
 
