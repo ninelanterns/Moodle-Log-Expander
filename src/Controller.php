@@ -5,6 +5,7 @@ class Controller extends PhpObj {
     protected $repo;
     public static $routes = [
         '\core\event\course_viewed' => 'Event',
+        '\core\event\course_completed' => 'Event',
         '\mod_page\event\course_module_viewed' => 'ModuleEvent',
         '\mod_quiz\event\course_module_viewed' => 'ModuleEvent',
         '\mod_url\event\course_module_viewed' => 'ModuleEvent',
@@ -28,7 +29,6 @@ class Controller extends PhpObj {
         '\mod_survey\event\course_module_viewed' => 'ModuleEvent',
         '\mod_url\event\course_module_viewed' => 'ModuleEvent',
         '\mod_facetoface\event\course_module_viewed' => 'ModuleEvent',
-        '\mod_feedback\event\course_module_viewed' => 'ModuleEvent',
         '\mod_quiz\event\attempt_abandoned' => 'AttemptEvent',
         '\mod_quiz\event\attempt_preview_started' => 'AttemptEvent',
         '\mod_quiz\event\attempt_reviewed' => 'AttemptEvent',
@@ -40,7 +40,6 @@ class Controller extends PhpObj {
         '\core\event\user_created' => 'Event',
         '\core\event\user_enrolment_created' => 'Event',
         '\mod_scorm\event\sco_launched' => 'ScormLaunched',
-        '\mod_feedback\event\response_submitted' => 'FeedbackSubmitted'
     ];
 
     /**
@@ -52,7 +51,22 @@ class Controller extends PhpObj {
     }
 
     /**
-     * Creates new events.
+     * Creates a new event.
+     * @param [String => Mixed] $opts
+     * @return [String => Mixed]
+     */
+    public function createEvent(array $opts) {
+        $route = isset($opts['eventname']) ? $opts['eventname'] : '';
+        if (isset(static::$routes[$route]) && ($opts['userid'] > 0 || $opts['relateduserid'] > 0)) {
+            $event = '\LogExpander\Events\\'.static::$routes[$route];
+            return (new $event($this->repo))->read($opts);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Creates a new event.
      * @param [String => Mixed] $events
      * @return [String => Mixed]
      */
@@ -61,13 +75,8 @@ class Controller extends PhpObj {
         foreach ($events as $index => $opts) {
             $route = isset($opts['eventname']) ? $opts['eventname'] : '';
             if (isset(static::$routes[$route]) && ($opts['userid'] > 0 || $opts['relateduserid'] > 0)) {
-                try {
-                    $event = '\LogExpander\Events\\'.static::$routes[$route];
-                    array_push($results , (new $event($this->repo))->read($opts));
-                }
-                catch (\Exception $e) {
-                    // Error processing event; skip it. 
-                }
+                $event = '\LogExpander\Events\\'.static::$routes[$route];
+                array_push($results , (new $event($this->repo))->read($opts));
             }
         }
         return $results;
