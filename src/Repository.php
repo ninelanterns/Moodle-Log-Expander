@@ -1,5 +1,6 @@
 <?php namespace LogExpander;
 use \stdClass as PhpObj;
+use Exception;
 
 class Repository extends PhpObj {
     protected $store;
@@ -23,6 +24,9 @@ class Repository extends PhpObj {
      */
     protected function readStoreRecord($type, array $query) {
         $model = $this->store->get_record($type, $query);
+        if ($model === false) {
+            throw new Exception('Record not found.');
+        }
         return $model;
     }
 
@@ -35,6 +39,15 @@ class Repository extends PhpObj {
     protected function readStoreRecords($type, array $query) {
         $model = $this->store->get_records($type, $query);
         return $model;
+    }
+
+    /**
+     * Calls the Moodle core fullname function
+     * @param PHPObj $user
+     * @return Str
+     */
+    protected function fullname($user) {
+        return fullname($user);
     }
 
     /**
@@ -105,10 +118,16 @@ class Repository extends PhpObj {
         $quizSlots = $this->readStoreRecords('quiz_slots', ['quizid' => $quizId]);
         $questions = [];
         foreach ($quizSlots as $index => $quizSlot) {
-            $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
-            $question->answers = $this->readStoreRecords('question_answers', ['question' => $question->id]);
-            $question->url = $this->cfg->wwwroot . '/mod/question/question.php?id='.$question->id;
-            $questions[$question->id] = $question;
+            try {
+                $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
+                $question->answers = $this->readStoreRecords('question_answers', ['question' => $question->id]);
+                $question->url = $this->cfg->wwwroot . '/mod/question/question.php?id='.$question->id;
+                $questions[$question->id] = $question;
+            }
+            catch (\Exception $e) {
+                // Question not found; maybe it was deleted since the event. 
+                // Don't add the question to the list, but also don't block the attempt event.
+            }
         }
 
         return $questions;
@@ -187,6 +206,7 @@ class Repository extends PhpObj {
     public function readUser($id) {
         $model = $this->readObject($id, 'user');
         $model->url = $this->cfg->wwwroot;
+        $model->fullname = $this->fullname($model);
         return $model;
     }
 

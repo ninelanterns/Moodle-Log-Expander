@@ -57,7 +57,8 @@
         "firstnamephonetic": "",
         "middlename": "",
         "alternatename": "",
-        "type": "mod_user"
+        "type": "mod_user", 
+        "fullname": "Test User"
     },
     "course": {
         "id": "2",
