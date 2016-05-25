@@ -49,24 +49,8 @@ class Controller extends PhpObj {
     public function __construct(Repository $repo) {
         $this->repo = $repo;
     }
-
     /**
-     * Creates a new event.
-     * @param [String => Mixed] $opts
-     * @return [String => Mixed]
-     */
-    public function createEvent(array $opts) {
-        $route = isset($opts['eventname']) ? $opts['eventname'] : '';
-        if (isset(static::$routes[$route]) && ($opts['userid'] > 0 || $opts['relateduserid'] > 0)) {
-            $event = '\LogExpander\Events\\'.static::$routes[$route];
-            return (new $event($this->repo))->read($opts);
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Creates a new event.
+     * Creates new events.
      * @param [String => Mixed] $events
      * @return [String => Mixed]
      */
@@ -75,8 +59,13 @@ class Controller extends PhpObj {
         foreach ($events as $index => $opts) {
             $route = isset($opts['eventname']) ? $opts['eventname'] : '';
             if (isset(static::$routes[$route]) && ($opts['userid'] > 0 || $opts['relateduserid'] > 0)) {
-                $event = '\LogExpander\Events\\'.static::$routes[$route];
-                array_push($results , (new $event($this->repo))->read($opts));
+                try {
+                    $event = '\LogExpander\Events\\'.static::$routes[$route];
+                    array_push($results , (new $event($this->repo))->read($opts));
+                }
+                catch (\Exception $e) {
+                    // Error processing event; skip it.
+                }
             }
         }
         return $results;
