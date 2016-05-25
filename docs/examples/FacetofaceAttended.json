@@ -259,5 +259,45 @@
                 "timefinish": "1464179400"
             }
         }
+    },
+    "signups": {
+        "1": {
+            "id": "1",
+            "sessionid": "1",
+            "userid": "2",
+            "mailedreminder": "0",
+            "discountcode": null,
+            "notificationtype": "3",
+            "status": {
+                "id": "9",
+                "signupid": "1",
+                "statuscode": "90",
+                "superceded": "0",
+                "grade": null,
+                "note": "",
+                "advice": null,
+                "createdby": "2",
+                "timecreated": "1464182721"
+            }
+        },
+        "2": {
+            "id": "2",
+            "sessionid": "1",
+            "userid": "3",
+            "mailedreminder": "0",
+            "discountcode": null,
+            "notificationtype": "3",
+            "status": {
+                "id": "9",
+                "signupid": "1",
+                "statuscode": "100",
+                "superceded": "0",
+                "grade": null,
+                "note": "",
+                "advice": null,
+                "createdby": "2",
+                "timecreated": "1464182721"
+            }
+        }
     }
 }

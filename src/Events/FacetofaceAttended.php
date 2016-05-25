@@ -1,6 +1,6 @@
 <?php namespace LogExpander\Events;
 
-class FacetofaceEvent extends Event {
+class FacetofaceEvent extends FacetofaceEvent {
     /**
      * Reads data for an event.
      * @param [String => Mixed] $opts
@@ -8,11 +8,9 @@ class FacetofaceEvent extends Event {
      * @override Event
      */
     public function read(array $opts) {
-
         $session = $this->repo->readFacetofaceSession($opts['objectid']);
         return array_merge(parent::read($opts), [
-            'module' => $this->repo->readModule($session->facetoface, 'facetoface'),
-            'session' => $session
+            'signups' => $this->repo->readFacetofaceSessionSignups($opts['objectid'], $opts['timecreated'])
         ]);
     }
 }

@@ -1,7 +1,7 @@
 <?php namespace LogExpander\Tests;
-use \LogExpander\Events\FacetofaceEvent as Event;
+use \LogExpander\Events\FacetofaceAttended as Event;
 
-class FacetofaceEventTest extends EventTest {
+class FacetofaceAttendedTest extends FacetofaceEventTest {
     /**
      * Sets up the tests.
      * @override TestCase
@@ -20,7 +20,6 @@ class FacetofaceEventTest extends EventTest {
 
     protected function assertOutput($input, $output) {
         parent::assertOutput($input, $output);
-        $this->assertModule(1, $output['module'], 'facetoface');
-        $this->assertEquals(2, $output['session']->dates[2]->id);
+        $this->assertEquals(1, $output['signups'][1]->id);
     }
 }
