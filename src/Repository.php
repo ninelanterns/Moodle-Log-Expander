@@ -207,6 +207,9 @@ class Repository extends PhpObj {
         $model = $this->readObject($id, 'user');
         $model->url = $this->cfg->wwwroot;
         $model->fullname = $this->fullname($model);
+        if (isset($model->password)){
+            unset($model->password);
+        }
         return $model;
     }
 

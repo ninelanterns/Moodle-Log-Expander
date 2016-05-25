@@ -9,9 +9,10 @@ class FacetofaceEvent extends Event {
      */
     public function read(array $opts) {
 
+        $session = $this->repo->readFacetofaceSession($opts['objectid']);
         return array_merge(parent::read($opts), [
             'module' => $this->repo->readModule($session->facetoface, 'facetoface'),
-            'session' => $this->repo->readFacetofaceSession($opts['objectid']),
+            'session' => $session,
             'signups' => $this->repo->readFacetofaceSessionSignups($opts['objectid'], $opts['userid'])
         ]);
     }
