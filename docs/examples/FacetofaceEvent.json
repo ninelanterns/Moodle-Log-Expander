@@ -268,84 +268,16 @@
             "mailedreminder": "0",
             "discountcode": null,
             "notificationtype": "3",
-            "statuses": {
-                "1": {
-                    "id": "1",
-                    "signupid": "1",
-                    "statuscode": "60",
-                    "superceded": "1",
-                    "grade": null,
-                    "note": "",
-                    "advice": null,
-                    "createdby": "2",
-                    "timecreated": "1464179527"
-                },
-                "2": {
-                    "id": "2",
-                    "signupid": "1",
-                    "statuscode": "10",
-                    "superceded": "1",
-                    "grade": null,
-                    "note": "chickens",
-                    "advice": null,
-                    "createdby": "2",
-                    "timecreated": "1464179718"
-                },
-                "3": {
-                    "id": "3",
-                    "signupid": "1",
-                    "statuscode": "60",
-                    "superceded": "1",
-                    "grade": null,
-                    "note": "",
-                    "advice": null,
-                    "createdby": "2",
-                    "timecreated": "1464181041"
-                },
-                "4": {
-                    "id": "4",
-                    "signupid": "1",
-                    "statuscode": "10",
-                    "superceded": "1",
-                    "grade": null,
-                    "note": "",
-                    "advice": null,
-                    "createdby": "2",
-                    "timecreated": "1464181228"
-                },
-                "7": {
-                    "id": "7",
-                    "signupid": "1",
-                    "statuscode": "60",
-                    "superceded": "1",
-                    "grade": null,
-                    "note": "",
-                    "advice": null,
-                    "createdby": "2",
-                    "timecreated": "1464182369"
-                },
-                "8": {
-                    "id": "8",
-                    "signupid": "1",
-                    "statuscode": "10",
-                    "superceded": "1",
-                    "grade": null,
-                    "note": "No longer want to attend",
-                    "advice": null,
-                    "createdby": "2",
-                    "timecreated": "1464182418"
-                },
-                "9": {
-                    "id": "9",
-                    "signupid": "1",
-                    "statuscode": "60",
-                    "superceded": "0",
-                    "grade": null,
-                    "note": "",
-                    "advice": null,
-                    "createdby": "2",
-                    "timecreated": "1464182721"
-                }
+            "status": {
+                "id": "9",
+                "signupid": "1",
+                "statuscode": "60",
+                "superceded": "0",
+                "grade": null,
+                "note": "",
+                "advice": null,
+                "createdby": "2",
+                "timecreated": "1464182721"
             }
         }
     }
