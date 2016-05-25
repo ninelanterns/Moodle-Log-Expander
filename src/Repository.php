@@ -244,7 +244,7 @@ class Repository extends PhpObj {
      * Reads a face to face session
      * @return PhpObj
      */
-    public readFacetofaceSession($id) {
+    public function readFacetofaceSession($id) {
         $model = $this->readObject($id, 'facetoface_sessions');
         $model->dates = $this->readStoreRecords('facetoface_sessions_dates', ['sessionid' => $id]);
         return $model;
@@ -254,7 +254,7 @@ class Repository extends PhpObj {
      * Reads face to face session signups
      * @return PhpObj
      */
-    public readFacetofaceSessionSignups($sessionid, $userid) {
+    public function readFacetofaceSessionSignups($sessionid, $userid) {
         $signups = $this->readStoreRecords('facetoface_signups', ['sessionid' => $sessionid, 'userid' => $userid]);
 
         foreach ($signups as $index => $signup) {
