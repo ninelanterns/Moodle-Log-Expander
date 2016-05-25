@@ -1,6 +1,6 @@
 <?php namespace LogExpander\Events;
 
-class FacetofaceEvent extends FacetofaceEvent {
+class FacetofaceAttended extends FacetofaceEvent {
     /**
      * Reads data for an event.
      * @param [String => Mixed] $opts
