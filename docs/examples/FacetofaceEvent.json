@@ -236,7 +236,7 @@
         "approvalreqd": "0",
         "usercalentry": "1",
         "type": "facetoface",
-        "url": "http:\/\/localhost:8888\/moodle\/mod\/facetoface\/view.php?id=137"
+        "url": "http:\/\/localhost:8888\/moodle\/mod\/facetoface\/view.php?id=1"
     },
     "session": {
         "id": "1",
@@ -251,6 +251,7 @@
         "timecreated": "1464179438",
         "timemodified": "0",
         "type": "facetoface_sessions",
+        "url": "http:\/\/localhost:8888\/moodle\/mod\/facetoface\/signup.php?s=1",
         "dates": {
             "1": {
                 "id": "1",

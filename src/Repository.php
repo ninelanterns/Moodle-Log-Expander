@@ -250,6 +250,7 @@ class Repository extends PhpObj {
     public function readFacetofaceSession($id) {
         $model = $this->readObject($id, 'facetoface_sessions');
         $model->dates = $this->readStoreRecords('facetoface_sessions_dates', ['sessionid' => $id]);
+        $model->url = $this->cfg->wwwroot . '/mod/facetoface/signup.php?s=' . $id;
         return $model;
     }
 
