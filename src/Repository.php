@@ -239,4 +239,28 @@ class Repository extends PhpObj {
         $model->type = "site";
         return $model;
     }
+
+    /**
+     * Reads a face to face session
+     * @return PhpObj
+     */
+    public readFacetofaceSession($id) {
+        $model = $this->readObject($id, 'facetoface_sessions');
+        $model->dates = $this->readStoreRecords('facetoface_sessions_dates', ['sessionid' => $id]);
+        return $model;
+    }
+
+    /**
+     * Reads face to face session signups
+     * @return PhpObj
+     */
+    public readFacetofaceSessionSignups($sessionid, $userid) {
+        $signups = $this->readStoreRecords('facetoface_signups', ['sessionid' => $sessionid, 'userid' => $userid]);
+
+        foreach ($signups as $index => $signup) {
+            $signups[$index]->statuses = $this->readStoreRecords('facetoface_signups_status', ['signupid' => $signup->id]);
+        }
+
+        return $signups;
+    }
 }

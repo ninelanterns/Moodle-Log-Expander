@@ -1,6 +1,6 @@
 <?php namespace LogExpander\Events;
 
-class FacetofaceAttend extends Event {
+class FacetofaceAttend extends FacetofaceEvent {
     /**
      * Reads data for an event.
      * @param [String => Mixed] $opts
@@ -9,12 +9,7 @@ class FacetofaceAttend extends Event {
      */
     public function read(array $opts) {
 
-        return null;
-
         return array_merge(parent::read($opts), [
-            'module' => $this->repo->readModule($attempt->feedback, 'feedback'),
-            'questions' => $this->repo->readFeedbackQuestions($attempt->feedback),
-            'attempt' => $attempt,
         ]);
     }
 }
