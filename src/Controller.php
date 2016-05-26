@@ -1,6 +1,5 @@
 <?php namespace LogExpander;
 use \stdClass as PhpObj;
-
 class Controller extends PhpObj {
     protected $repo;
     public static $routes = [
@@ -26,8 +25,9 @@ class Controller extends PhpObj {
         '\mod_glossary\event\course_module_viewed' => 'ModuleEvent',
         '\mod_imscp\event\course_module_viewed' => 'ModuleEvent',
         '\mod_survey\event\course_module_viewed' => 'ModuleEvent',
-        //'\mod_url\event\course_module_viewed' => 'ModuleEvent',
+        '\mod_url\event\course_module_viewed' => 'ModuleEvent',
         '\mod_facetoface\event\course_module_viewed' => 'ModuleEvent',
+        '\mod_feedback\event\course_module_viewed' => 'ModuleEvent',
         '\mod_quiz\event\attempt_abandoned' => 'AttemptEvent',
         '\mod_quiz\event\attempt_preview_started' => 'AttemptEvent',
         '\mod_quiz\event\attempt_reviewed' => 'AttemptEvent',
@@ -39,9 +39,9 @@ class Controller extends PhpObj {
         '\core\event\user_created' => 'Event',
         '\core\event\user_enrolment_created' => 'Event',
         '\mod_scorm\event\sco_launched' => 'ScormLaunched',
-        '\core\event\course_completed' => 'CourseCompleted',
+        '\mod_feedback\event\response_submitted' => 'FeedbackSubmitted',
+        '\core\event\course_completed'=>'CourseCompleted'
     ];
-
     /**
      * Constructs a new Controller.
      * @param Repository $repo
