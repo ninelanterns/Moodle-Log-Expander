@@ -262,7 +262,7 @@ class Repository extends PhpObj {
         $signups = $this->readStoreRecords('facetoface_signups', ['sessionid' => $sessionid]);
 
         foreach ($signups as $index => $signup) {
-            $signups[$index]->statuses = $this->readStoreRecord('facetoface_signups_status', ['signupid' => $signup->id]);
+            $signups[$index]->statuses = $this->readStoreRecords('facetoface_signups_status', ['signupid' => $signup->id]);
             $signups[$index]->attendee = $this->readUser($signup->userid);
         }
 
