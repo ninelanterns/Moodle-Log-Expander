@@ -51,7 +51,7 @@ class TestRepository extends MoodleRepository {
             'presentation' => 'r>>>>>0#### incorrect|1#### correct',
             'typ' => 'multichoicerated',
             'value' =>  '2',
-            'timemodified' => 1433946702
+            'timemodified' => 1433946702,
         ];
 
         if ($type == 'question_attempt_steps') {
