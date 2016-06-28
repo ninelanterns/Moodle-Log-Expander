@@ -47,7 +47,12 @@ class TestRepository extends MoodleRepository {
             'answer' => 'test answer',
             'rightanswer' => 'test answer',
             'responsesummary' => 'test answer',
-            'sequencenumber' => 1
+            'sequencenumber' => 1,
+            'item' => '1',
+            'presentation' => 'r>>>>>0#### incorrect|1#### correct',
+            'typ' => 'multichoicerated',
+            'value' =>  '2',
+            'timemodified' => 1433946702,
         ];
 
         if ($type == 'question_attempt_steps') {
@@ -71,7 +76,7 @@ class TestRepository extends MoodleRepository {
         $record2->questionid = '1';
         $record2->sequencenumber = '2';
         return [
-            "1" => $record1, 
+            "1" => $record1,
             "2" => $record2
         ];
     }

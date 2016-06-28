@@ -1,6 +1,5 @@
 <?php namespace LogExpander;
 use \stdClass as PhpObj;
-
 class Controller extends PhpObj {
     protected $repo;
     public static $routes = [
@@ -26,9 +25,7 @@ class Controller extends PhpObj {
         '\mod_glossary\event\course_module_viewed' => 'ModuleEvent',
         '\mod_imscp\event\course_module_viewed' => 'ModuleEvent',
         '\mod_survey\event\course_module_viewed' => 'ModuleEvent',
-        '\mod_url\event\course_module_viewed' => 'ModuleEvent',
         '\mod_facetoface\event\course_module_viewed' => 'ModuleEvent',
-        '\mod_feedback\event\course_module_viewed' => 'ModuleEvent',
         '\mod_quiz\event\attempt_abandoned' => 'AttemptEvent',
         '\mod_quiz\event\attempt_preview_started' => 'AttemptEvent',
         '\mod_quiz\event\attempt_reviewed' => 'AttemptEvent',
@@ -44,8 +41,8 @@ class Controller extends PhpObj {
         '\mod_facetoface\event\signup_success' => 'FacetofaceEvent',
         '\mod_facetoface\event\cancel_booking' => 'FacetofaceEvent',
         '\mod_facetoface\event\take_attendance' => 'FacetofaceAttended'
+        '\core\event\course_completed'=>'CourseCompleted'
     ];
-
     /**
      * Constructs a new Controller.
      * @param Repository $repo
@@ -53,7 +50,6 @@ class Controller extends PhpObj {
     public function __construct(Repository $repo) {
         $this->repo = $repo;
     }
-
     /**
      * Creates new events.
      * @param [String => Mixed] $events
@@ -69,7 +65,7 @@ class Controller extends PhpObj {
                     array_push($results , (new $event($this->repo))->read($opts));
                 }
                 catch (\Exception $e) {
-                    // Error processing event; skip it. 
+                    // Error processing event; skip it.
                 }
             }
         }
