@@ -21,6 +21,6 @@ class FacetofaceAttendedTest extends FacetofaceEventTest {
     protected function assertOutput($input, $output) {
         parent::assertOutput($input, $output);
         $this->assertEquals(1, $output['signups'][1]->id);
-        $this->assertEquals(1, $output['signups'][1]['attendee']->id);
+        $this->assertEquals(1, $output['signups'][1]->attendee->id);
     }
 }
