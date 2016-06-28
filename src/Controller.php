@@ -40,7 +40,7 @@ class Controller extends PhpObj {
         '\mod_feedback\event\response_submitted' => 'FeedbackSubmitted',
         '\mod_facetoface\event\signup_success' => 'FacetofaceEvent',
         '\mod_facetoface\event\cancel_booking' => 'FacetofaceEvent',
-        '\mod_facetoface\event\take_attendance' => 'FacetofaceAttended'
+        '\mod_facetoface\event\take_attendance' => 'FacetofaceAttended',
         '\core\event\course_completed'=>'CourseCompleted'
     ];
     /**
