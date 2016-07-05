@@ -122,9 +122,27 @@ class Repository extends PhpObj {
                 $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
                 $question->answers = $this->readStoreRecords('question_answers', ['question' => $question->id]);
                 $question->url = $this->cfg->wwwroot . '/mod/question/question.php?id='.$question->id;
+
+                switch ($question->qtype) {
+                    case 'numerical':
+                        $question->numerical = $this->readStoreRecord('question_numerical', ['question' => $question->id]);
+                        $question->numerical->options = $this->readStoreRecords('question_numerical_options', ['question' => $question->id]);
+                        $question->numerical->units = $this->readStoreRecords('question_numerical_units', ['question' => $question->id]);
+                        break;
+                    case 'match':
+                        $question->match = (object)[
+                            'options' => $this->readStoreRecords('qtype_match_options', ['questionid' => $question->id]),
+                            'subquestions' => $this->readStoreRecords('qtype_match_subquestions', ['questionid' => $question->id])
+                        ];
+                        break;
+                    default:
+                        break;
+                }
+
                 $questions[$question->id] = $question;
             }
             catch (\Exception $e) {
+                var_dump($e);
                 // Question not found; maybe it was deleted since the event. 
                 // Don't add the question to the list, but also don't block the attempt event.
             }
@@ -207,6 +225,15 @@ class Repository extends PhpObj {
         $model = $this->readObject($id, 'user');
         $model->url = $this->cfg->wwwroot;
         $model->fullname = $this->fullname($model);
+        if (isset($model->password)){
+             unset($model->password);
+        }
+        if (isset($model->secret)){
+             unset($model->secret);
+        }
+        if (isset($model->lastip)){
+             unset($model->lastip);
+        }
         return $model;
     }
 
