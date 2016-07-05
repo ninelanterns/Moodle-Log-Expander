@@ -123,20 +123,18 @@ class Repository extends PhpObj {
                 $question->answers = $this->readStoreRecords('question_answers', ['question' => $question->id]);
                 $question->url = $this->cfg->wwwroot . '/mod/question/question.php?id='.$question->id;
 
-                switch ($question->qtype) {
-                    case 'numerical':
-                        $question->numerical = $this->readStoreRecord('question_numerical', ['question' => $question->id]);
-                        $question->numerical->options = $this->readStoreRecords('question_numerical_options', ['question' => $question->id]);
-                        $question->numerical->units = $this->readStoreRecords('question_numerical_units', ['question' => $question->id]);
-                        break;
-                    case 'match':
-                        $question->match = (object)[
-                            'options' => $this->readStoreRecords('qtype_match_options', ['questionid' => $question->id]),
-                            'subquestions' => $this->readStoreRecords('qtype_match_subquestions', ['questionid' => $question->id])
-                        ];
-                        break;
-                    default:
-                        break;
+                if ($question->qtype == 'numerical') {
+                    $question->numerical = $this->readStoreRecord('question_numerical', ['question' => $question->id]);
+                    $question->numerical->options = $this->readStoreRecords('question_numerical_options', ['question' => $question->id]);
+                    $question->numerical->units = $this->readStoreRecords('question_numerical_units', ['question' => $question->id]);
+                } else if ($question->qtype == 'match') {
+                    $question->match = (object)[
+                        'options' => $this->readStoreRecords('qtype_match_options', ['questionid' => $question->id]),
+                        'subquestions' => $this->readStoreRecords('qtype_match_subquestions', ['questionid' => $question->id])
+                    ];
+                } else if (strpos($question->qtype, 'calculated') === 0) {
+                    $question->calculated = $this->readStoreRecord('question_calculated', ['question' => $question->id]);
+                    $question->calculated->options = $this->readStoreRecords('question_calculated_options', ['question' => $question->id]);
                 }
 
                 $questions[$question->id] = $question;
