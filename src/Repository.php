@@ -126,22 +126,22 @@ class Repository extends PhpObj {
                 if ($question->qtype == 'numerical') {
                     $question->numerical = (object)[
                         'answers' => $this->readStoreRecords('question_numerical', ['question' => $question->id]),
-                        'options' => $this->readStoreRecords('question_numerical_options', ['question' => $question->id]),
+                        'options' => $this->readStoreRecord('question_numerical_options', ['question' => $question->id]),
                         'units' => $this->readStoreRecords('question_numerical_units', ['question' => $question->id])
                     ];
                 } else if ($question->qtype == 'match') {
                     $question->match = (object)[
-                        'options' => $this->readStoreRecords('qtype_match_options', ['questionid' => $question->id]),
+                        'options' => $this->readStoreRecord('qtype_match_options', ['questionid' => $question->id]),
                         'subquestions' => $this->readStoreRecords('qtype_match_subquestions', ['questionid' => $question->id])
                     ];
                 } else if (strpos($question->qtype, 'calculated') === 0) {
                     $question->calculated = (object)[
                         'answers' => $this->readStoreRecords('question_calculated', ['question' => $question->id]),
-                        'options' => $this->readStoreRecords('question_calculated_options', ['question' => $question->id])
+                        'options' => $this->readStoreRecord('question_calculated_options', ['question' => $question->id])
                     ];
                 } else if ($question->qtype == 'shortanswer') {
                     $question->shortanswer = (object)[
-                        'options' => $this->readStoreRecords('qtype_mhortanswer_options', ['questionid' => $question->id])
+                        'options' => $this->readStoreRecord('qtype_mhortanswer_options', ['questionid' => $question->id])
                     ];
                 }
 
