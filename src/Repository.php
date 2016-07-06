@@ -128,7 +128,7 @@ class Repository extends PhpObj {
                         'answers' => $this->readStoreRecords('question_numerical', ['question' => $question->id]),
                         'options' => $this->readStoreRecords('question_numerical_options', ['question' => $question->id]),
                         'units' => $this->readStoreRecords('question_numerical_units', ['question' => $question->id])
-                    ]
+                    ];
                 } else if ($question->qtype == 'match') {
                     $question->match = (object)[
                         'options' => $this->readStoreRecords('qtype_match_options', ['questionid' => $question->id]),
@@ -138,7 +138,7 @@ class Repository extends PhpObj {
                     $question->calculated = (object)[
                         'answers' => $this->readStoreRecords('question_calculated', ['question' => $question->id]),
                         'options' => $this->readStoreRecords('question_calculated_options', ['question' => $question->id])
-                    ]
+                    ];
                 }
 
                 $questions[$question->id] = $question;
