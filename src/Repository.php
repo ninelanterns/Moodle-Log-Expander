@@ -141,7 +141,7 @@ class Repository extends PhpObj {
                     ];
                 } else if ($question->qtype == 'shortanswer') {
                     $question->shortanswer = (object)[
-                        'options' => $this->readStoreRecord('qtype_mhortanswer_options', ['questionid' => $question->id])
+                        'options' => $this->readStoreRecord('qtype_shortanswer_options', ['questionid' => $question->id])
                     ];
                 }
 
