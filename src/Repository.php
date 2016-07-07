@@ -207,6 +207,9 @@ class Repository extends PhpObj {
         $model = $this->readObject($id, 'user');
         $model->url = $this->cfg->wwwroot;
         $model->fullname = $this->fullname($model);
+        if (isset($model->password)){
+            unset($model->password);
+        }
         return $model;
     }
 
@@ -238,5 +241,31 @@ class Repository extends PhpObj {
         $model->url = $this->cfg->wwwroot;
         $model->type = "site";
         return $model;
+    }
+
+    /**
+     * Reads a face to face session
+     * @return PhpObj
+     */
+    public function readFacetofaceSession($id) {
+        $model = $this->readObject($id, 'facetoface_sessions');
+        $model->dates = $this->readStoreRecords('facetoface_sessions_dates', ['sessionid' => $id]);
+        $model->url = $this->cfg->wwwroot . '/mod/facetoface/signup.php?s=' . $id;
+        return $model;
+    }
+
+    /**
+     * Reads face to face session signups
+     * @return PhpObj
+     */
+    public function readFacetofaceSessionSignups($sessionid, $timecreated) {
+        $signups = $this->readStoreRecords('facetoface_signups', ['sessionid' => $sessionid]);
+
+        foreach ($signups as $index => $signup) {
+            $signups[$index]->statuses = $this->readStoreRecords('facetoface_signups_status', ['signupid' => $signup->id]);
+            $signups[$index]->attendee = $this->readUser($signup->userid);
+        }
+
+        return $signups;
     }
 }
