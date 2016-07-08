@@ -71,6 +71,13 @@ class TestRepository extends MoodleRepository {
                 ];
                 break;
 
+            case 'forum':
+                $response = [
+                    'id' => '1',
+                    'course' => '1',
+                    'name' => 'test_name',
+                ];
+                break;
             case 'forum_discussions':
                 $response = [
                     'id' => '1',
@@ -82,12 +89,28 @@ class TestRepository extends MoodleRepository {
                 ];
                 break;
 
+            case 'facetoface':
+                $response = [
+                    'id' => '1',
+                    'course' => '1',
+                    'name' => 'test_name'
+                ];
+                break;
+
             case 'facetoface_sessions':
                 $response = [
                     'id' => '1',
                     'facetoface' => '1',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
+                ];
+                break;
+
+            case 'facetoface_signups':
+                $response = [
+                    'id' => '1',
+                    'sessionid' => '1',
+                    'userid' => '1'
                 ];
                 break;
 
@@ -254,6 +277,7 @@ class TestRepository extends MoodleRepository {
                     'name' => 'test_name',
                     'presentation' => 'r>>>>>0#### incorrect|1#### correct',
                     'typ' => 'multichoicerated',
+                    'template' => '1'
                 ];
                 break;
 
@@ -275,14 +299,6 @@ class TestRepository extends MoodleRepository {
                     'lang' => 'en',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'facetoface_signups':
-                $response = [
-                    'id' => '1',
-                    'sessionid' => '1',
-                    'userid' => '1'
                 ];
                 break;
 
