@@ -298,7 +298,7 @@ class TestRepository extends MoodleRepository {
                     'timemodified' => 1433946702,
                 ]
             ],
-        }
+        ];
 
         if (isset($fakeMoodleDatabase[$type][$index])) {
             $response = $fakeMoodleDatabase[$type][$index];
