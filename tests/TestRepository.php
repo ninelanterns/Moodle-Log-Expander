@@ -46,7 +46,7 @@ class TestRepository extends MoodleRepository {
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
                 ]
-            
+            ],
             'quiz' => [
                 [
                     'id' => '1',
