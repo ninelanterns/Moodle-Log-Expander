@@ -104,7 +104,7 @@ class TestRepository extends MoodleRepository {
                     'timestart' => 1433941702,
                     'timefinish' => 1433946702,
                 ]
-            ]
+            ],
             'facetoface_signups' => [
                 [
                     'id' => '1',
