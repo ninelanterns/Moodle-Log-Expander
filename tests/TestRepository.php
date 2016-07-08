@@ -20,7 +20,7 @@ class TestRepository extends MoodleRepository {
                     'lang' => 'en',
                     'fullname' => 'test_fullname',
                     'password' => 'topsecret'
-                ]
+                ];
                 break;
 
             case 'assign_grades':
@@ -31,7 +31,7 @@ class TestRepository extends MoodleRepository {
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
                     'grade' => '2',
-                ]
+                ];
                 break;
 
             case 'assign_submission':
@@ -41,7 +41,7 @@ class TestRepository extends MoodleRepository {
                     'userid' => '1',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'quiz_attempts':
@@ -50,7 +50,7 @@ class TestRepository extends MoodleRepository {
                     'quiz' => '1',
                     'userid' => '1',
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'forum_discussions':
@@ -61,7 +61,7 @@ class TestRepository extends MoodleRepository {
                     'name' => 'test_name',
                     'userid' => '1',
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'facetoface_sessions':
@@ -70,7 +70,7 @@ class TestRepository extends MoodleRepository {
                     'facetoface' => '1',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'feedback_completed':
@@ -79,7 +79,7 @@ class TestRepository extends MoodleRepository {
                     'feedback' => '1',
                     'userid' => '1',
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'page':
@@ -88,21 +88,21 @@ class TestRepository extends MoodleRepository {
                     'course' => '1',
                     'name' => 'test_name',
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'scorm_scoes':
                 $reponse = [
                     'id' => '1',
                     'scorm' => '1'
-                ]
+                ];
                 break;
 
             case 'modules':
                 $reponse = [
                     'id' => '1',
                     'name' => 'test_name'
-                ]
+                ];
                 break;
 
             case 'course_modules':
@@ -111,7 +111,7 @@ class TestRepository extends MoodleRepository {
                     'course' => '1',
                     'module' => '1',
                     'instance' => '1'
-                ]
+                ];
                 break;
 
             case 'question':
@@ -123,7 +123,7 @@ class TestRepository extends MoodleRepository {
                     'qtype' => 'multichoice',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'question_attempts':
@@ -134,7 +134,7 @@ class TestRepository extends MoodleRepository {
                     'rightanswer' => 'test answer',
                     'responsesummary' => 'test answer',
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'question_attempt_steps':
@@ -144,7 +144,7 @@ class TestRepository extends MoodleRepository {
                     'fraction' => '1.0000',
                     'timecreated' => 1433946702,
                     'userid' => '1',
-                ]
+                ];
                 break;
 
             case 'question_attempt_step_data':
@@ -152,7 +152,7 @@ class TestRepository extends MoodleRepository {
                     'id' => '1',
                     'name' => 'test_name',
                     'value' =>  '2',
-                ]
+                ];
                 break;
 
             case 'quiz_slots':
@@ -162,7 +162,7 @@ class TestRepository extends MoodleRepository {
                     'quizid' => '1',
                     'questionid' => '1',
                     'maxmark' => '5.00000',
-                ]
+                ];
                 break;
 
             case 'question_answers':
@@ -171,7 +171,7 @@ class TestRepository extends MoodleRepository {
                     'question' => '1',
                     'answer' => '1',
                     'fraction' => '1.0000',
-                ]
+                ];
                 break;
 
             case 'grade_items':
@@ -183,7 +183,7 @@ class TestRepository extends MoodleRepository {
                     'gradepass' => '5.00000',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'assignfeedback_comments':
@@ -192,7 +192,7 @@ class TestRepository extends MoodleRepository {
                     'assignment' => '1',
                     'grade' => '1',
                     'commenttext' => '<p>test comment</p>',
-                ]
+                ];
                 break;
 
             case 'feedback_completed':
@@ -200,7 +200,7 @@ class TestRepository extends MoodleRepository {
                     'id' => '1',
                     'feedback' => '1',
                     'userid' => '1',
-                ]
+                ];
                 break;
 
             case 'feedback_value':
@@ -208,7 +208,7 @@ class TestRepository extends MoodleRepository {
                     'id' => '1',
                     'course_id' => '1',
                     'item' => '1'
-                ]
+                ];
                 break;
 
             case 'feedback_item':
@@ -218,7 +218,7 @@ class TestRepository extends MoodleRepository {
                     'name' => 'test_name',
                     'presentation' => 'r>>>>>0#### incorrect|1#### correct',
                     'typ' => 'multichoicerated',
-                ]
+                ];
                 break;
 
             case 'feedback_template':
@@ -226,7 +226,7 @@ class TestRepository extends MoodleRepository {
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name'
-                ]
+                ];
                 break;
 
             case 'course':
@@ -239,7 +239,7 @@ class TestRepository extends MoodleRepository {
                     'lang' => 'en',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ]
+                ];
                 break;
 
             case 'facetoface_signups':
@@ -247,7 +247,7 @@ class TestRepository extends MoodleRepository {
                     'id' => '1',
                     'sessionid' => '1',
                     'userid' => '1'
-                ]
+                ];
                 break;
 
             default:
