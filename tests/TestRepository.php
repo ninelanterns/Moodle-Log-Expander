@@ -324,7 +324,7 @@ class TestRepository extends MoodleRepository {
             $response = $fakeMoodleDatabase[$type][$index];
         } else {
             $response = $fakeMoodleDatabase[$type][0];
-            $response['id'] = $index;
+            $response['id'] = strval($index + 1);
         }
 
         // Required for assertRecord in EventTest.php to pass, but what's the purpose of including and testing this? 
