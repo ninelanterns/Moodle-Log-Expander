@@ -14,7 +14,7 @@ class TestRepository extends MoodleRepository {
 
         switch ($type) {
             case 'user':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'username' => 'test_username',
                     'lang' => 'en',
@@ -24,7 +24,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'assign_grades':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'assignment' => '1',
                     'userid' => '1',
@@ -35,7 +35,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'assign_submission':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'assignment' => '1',
                     'userid' => '1',
@@ -45,7 +45,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'quiz_attempts':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'quiz' => '1',
                     'userid' => '1',
@@ -54,7 +54,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'forum_discussions':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'course' => '1',
                     'forum' => '1',
@@ -65,7 +65,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'facetoface_sessions':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'facetoface' => '1',
                     'timecreated' => 1433946702,
@@ -74,7 +74,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'feedback_completed':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'feedback' => '1',
                     'userid' => '1',
@@ -83,7 +83,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'page':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name',
@@ -92,21 +92,21 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'scorm_scoes':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'scorm' => '1'
                 ];
                 break;
 
             case 'modules':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'name' => 'test_name'
                 ];
                 break;
 
             case 'course_modules':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'course' => '1',
                     'module' => '1',
@@ -115,7 +115,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'question':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'category' => '1',
                     'name' => 'test_name',
@@ -127,7 +127,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'question_attempts':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'questionid' => '1',
                     'variant' => '1',
@@ -138,7 +138,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'question_attempt_steps':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'state' => 'gradedright',
                     'fraction' => '1.0000',
@@ -148,7 +148,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'question_attempt_step_data':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'name' => 'test_name',
                     'value' =>  '2',
@@ -156,7 +156,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'quiz_slots':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'slot' => '1',
                     'quizid' => '1',
@@ -166,7 +166,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'question_answers':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'question' => '1',
                     'answer' => '1',
@@ -175,7 +175,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'grade_items':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'courseid' => '1',
                     'grademax' => '5.00000',
@@ -187,7 +187,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'assignfeedback_comments':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'assignment' => '1',
                     'grade' => '1',
@@ -196,7 +196,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'feedback_completed':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'feedback' => '1',
                     'userid' => '1',
@@ -204,7 +204,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'feedback_value':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'course_id' => '1',
                     'item' => '1'
@@ -212,7 +212,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'feedback_item':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'feedback' => '1',
                     'name' => 'test_name',
@@ -222,7 +222,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'feedback_template':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name'
@@ -230,7 +230,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'course':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'category' => '1',
                     'fullname' => 'test_name',
@@ -243,7 +243,7 @@ class TestRepository extends MoodleRepository {
                 break;
 
             case 'facetoface_signups':
-                $reponse = [
+                $response = [
                     'id' => '1',
                     'sessionid' => '1',
                     'userid' => '1'
