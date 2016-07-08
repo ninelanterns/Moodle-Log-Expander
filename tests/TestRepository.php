@@ -10,7 +10,7 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecord($type, array $query) {
-        $response; 
+        $response = null; 
 
         switch ($type) {
             case 'user':
@@ -20,6 +20,14 @@ class TestRepository extends MoodleRepository {
                     'lang' => 'en',
                     'fullname' => 'test_fullname',
                     'password' => 'topsecret'
+                ];
+                break;
+
+            case 'assign':
+                $response = [
+                    'id' => '1',
+                    'course' => '1',
+                    'name' => 'test_name'
                 ];
                 break;
 
@@ -39,6 +47,16 @@ class TestRepository extends MoodleRepository {
                     'id' => '1',
                     'assignment' => '1',
                     'userid' => '1',
+                    'timecreated' => 1433946702,
+                    'timemodified' => 1433946702,
+                ];
+                break;
+            case 'quiz':
+                $response = [
+                    'id' => '1',
+                    'course' => '1',
+                    'name' => 'test_name',
+                    'grade' => '10',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
                 ];
@@ -86,6 +104,15 @@ class TestRepository extends MoodleRepository {
                 $response = [
                     'id' => '1',
                     'course' => '1',
+                    'name' => 'test_name',
+                    'timemodified' => 1433946702,
+                ];
+                break;
+
+            case 'scorm':
+                $response = [
+                    'id' => '1',
+                    'course' => '1'
                     'name' => 'test_name',
                     'timemodified' => 1433946702,
                 ];
@@ -195,6 +222,15 @@ class TestRepository extends MoodleRepository {
                 ];
                 break;
 
+            case 'feedback':
+                $response = [
+                    'id' => '1',
+                    'course' => '1',
+                    'name' => 'test_name',
+                    'timemodified' => 1433946702,
+                ];
+                break;
+
             case 'feedback_completed':
                 $response = [
                     'id' => '1',
@@ -253,6 +289,9 @@ class TestRepository extends MoodleRepository {
             default:
                 break;
         }
+
+        // Required for assertRecord in EventTest.php to pass, but what's the purpose of including and testing this? 
+        $response['type'] = 'object';
 
         return (object) $response;
     }
