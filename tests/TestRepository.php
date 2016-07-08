@@ -112,6 +112,13 @@ class TestRepository extends MoodleRepository {
                     'userid' => '1'
                 ]
             ],
+            'facetoface_signups_status' => [
+                [
+                    'id' => '1',
+                    'signupid' => '1',
+                    'statuscode' => '100'
+                ]
+            ],
             'feedback_completed' => [
                 [
                     'id' => '1',
