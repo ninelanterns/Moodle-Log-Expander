@@ -97,6 +97,14 @@ class TestRepository extends MoodleRepository {
                     'timemodified' => 1433946702,
                 ]
             ],
+            'facetoface_sessions_dates' => [
+                [
+                    'id' => '1',
+                    'sessionid' => '1',
+                    'timestart' => 1433941702,
+                    'timefinish' => 1433946702,
+                ]
+            ]
             'facetoface_signups' => [
                 [
                     'id' => '1',
@@ -202,6 +210,11 @@ class TestRepository extends MoodleRepository {
                     'id' => '1',
                     'name' => 'test_name',
                     'value' =>  '2',
+                ],
+                [
+                    'id' => '2',
+                    'name' => 'test_name',
+                    'value' =>  '1',
                 ]
             ],
             'quiz_slots' => [
