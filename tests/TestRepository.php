@@ -37,7 +37,7 @@ class TestRepository extends MoodleRepository {
                     'timemodified' => 1433946702,
                     'grade' => '2',
                 ]
-            ]
+            ],
             'assign_submission' => [
                 [
                     'id' => '1',
