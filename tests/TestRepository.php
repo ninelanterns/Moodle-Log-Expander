@@ -9,163 +9,147 @@ class TestRepository extends MoodleRepository {
      * @return php_obj
      * @override MoodleRepository
      */
-    protected function readStoreRecord($type, array $query) {
-        $response = null; 
+    protected function readStoreRecord($type, array $query, $index = 0) {
 
-        switch ($type) {
-            case 'user':
-                $response = [
+        $fakeMoodleDatabase = [
+            'user' => [
+                [
                     'id' => '1',
                     'username' => 'test_username',
                     'lang' => 'en',
                     'fullname' => 'test_fullname',
                     'password' => 'topsecret'
-                ];
-                break;
-
-            case 'assign':
-                $response = [
+                ]
+            ],
+            'assign' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name'
-                ];
-                break;
-
-            case 'assign_grades':
-                $response = [
+                ]
+            ],
+            'assign_grades' => [
+                [
                     'id' => '1',
                     'assignment' => '1',
                     'userid' => '1',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
                     'grade' => '2',
-                ];
-                break;
-
-            case 'assign_submission':
-                $response = [
+                ]
+            ]
+            'assign_submission' => [
+                [
                     'id' => '1',
                     'assignment' => '1',
                     'userid' => '1',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ];
-                break;
-            case 'quiz':
-                $response = [
+                ]
+            
+            'quiz' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name',
                     'grade' => '10',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'quiz_attempts':
-                $response = [
+                ]
+            ],
+            'quiz_attempts' => [
+                [
                     'id' => '1',
                     'quiz' => '1',
                     'userid' => '1',
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'forum':
-                $response = [
+                ]
+            ],
+            'forum' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name',
-                ];
-                break;
-            case 'forum_discussions':
-                $response = [
+                ]
+            ],
+            'forum_discussions' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'forum' => '1',
                     'name' => 'test_name',
                     'userid' => '1',
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'facetoface':
-                $response = [
+                ]
+            ],
+            'facetoface' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name'
-                ];
-                break;
-
-            case 'facetoface_sessions':
-                $response = [
+                ]
+            ],
+            'facetoface_sessions' => [
+                [
                     'id' => '1',
                     'facetoface' => '1',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'facetoface_signups':
-                $response = [
+                ]
+            ],
+            'facetoface_signups' => [
+                [
                     'id' => '1',
                     'sessionid' => '1',
                     'userid' => '1'
-                ];
-                break;
-
-            case 'feedback_completed':
-                $response = [
+                ]
+            ],
+            'feedback_completed' => [
+                [
                     'id' => '1',
                     'feedback' => '1',
                     'userid' => '1',
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'page':
-                $response = [
+                ]
+            ],
+            'page' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name',
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'scorm':
-                $response = [
+                ]
+            ],
+            'scorm' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name',
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'scorm_scoes':
-                $response = [
+                ]
+            ],
+            'scorm_scoes' => [
+                [
                     'id' => '1',
                     'scorm' => '1'
-                ];
-                break;
-
-            case 'modules':
-                $response = [
+                ]
+            ],
+            'modules' => [
+                [
                     'id' => '1',
                     'name' => 'test_name'
-                ];
-                break;
-
-            case 'course_modules':
-                $response = [
+                ]
+            ],
+            'course_modules' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'module' => '1',
                     'instance' => '1'
-                ];
-                break;
-
-            case 'question':
-                $response = [
+                ]
+            ],
+            'question' => [
+                [
                     'id' => '1',
                     'category' => '1',
                     'name' => 'test_name',
@@ -173,59 +157,79 @@ class TestRepository extends MoodleRepository {
                     'qtype' => 'multichoice',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'question_attempts':
-                $response = [
+                ]
+            ],
+            'question_attempts' => [
+                [
                     'id' => '1',
                     'questionid' => '1',
                     'variant' => '1',
                     'rightanswer' => 'test answer',
                     'responsesummary' => 'test answer',
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'question_attempt_steps':
-                $response = [
+                ],
+                [
+                    'id' => '2',
+                    'questionid' => '2',
+                    'variant' => '1',
+                    'rightanswer' => 'test answer',
+                    'responsesummary' => 'test answer',
+                    'timemodified' => 1433946702,
+                ]
+            ],
+            'question_attempt_steps' => [
+                [
                     'id' => '1',
+                    'questionattemptid' => '1',
+                    'sequencenumber' => '1',
+                    'state' => 'complete',
+                    'fraction' => null,
+                    'timecreated' => 1433946700,
+                    'userid' => '1',
+                ],
+                [
+                    'id' => '2',
+                    'questionattemptid' => '1',
+                    'sequencenumber' => '2',
                     'state' => 'gradedright',
                     'fraction' => '1.0000',
                     'timecreated' => 1433946702,
                     'userid' => '1',
-                ];
-                break;
-
-            case 'question_attempt_step_data':
-                $response = [
+                ]
+            ],
+            'question_attempt_step_data' => [
+                [
                     'id' => '1',
                     'name' => 'test_name',
                     'value' =>  '2',
-                ];
-                break;
-
-            case 'quiz_slots':
-                $response = [
+                ]
+            ],
+            'quiz_slots' => [
+                [
                     'id' => '1',
                     'slot' => '1',
                     'quizid' => '1',
                     'questionid' => '1',
                     'maxmark' => '5.00000',
-                ];
-                break;
-
-            case 'question_answers':
-                $response = [
+                ],
+                [
+                    'id' => '2',
+                    'slot' => '2',
+                    'quizid' => '1',
+                    'questionid' => '2',
+                    'maxmark' => '5.00000',
+                ]
+            ],
+            'question_answers' => [
+                [
                     'id' => '1',
                     'question' => '1',
                     'answer' => '1',
                     'fraction' => '1.0000',
-                ];
-                break;
-
-            case 'grade_items':
-                $response = [
+                ]
+            ],
+            'grade_items' => [
+                [
                     'id' => '1',
                     'courseid' => '1',
                     'grademax' => '5.00000',
@@ -233,64 +237,57 @@ class TestRepository extends MoodleRepository {
                     'gradepass' => '5.00000',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'assignfeedback_comments':
-                $response = [
+                ]
+            ],
+            'assignfeedback_comments' => [
+                [
                     'id' => '1',
                     'assignment' => '1',
                     'grade' => '1',
                     'commenttext' => '<p>test comment</p>',
-                ];
-                break;
-
-            case 'feedback':
-                $response = [
+                ]
+            ],
+            'feedback' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name',
                     'timemodified' => 1433946702,
-                ];
-                break;
-
-            case 'feedback_completed':
-                $response = [
+                ]
+            ],
+            'feedback_completed' => [
+                [
                     'id' => '1',
                     'feedback' => '1',
                     'userid' => '1',
-                ];
-                break;
-
-            case 'feedback_value':
-                $response = [
+                ]
+            ],
+            'feedback_value' => [
+                [
                     'id' => '1',
                     'course_id' => '1',
                     'item' => '1'
-                ];
-                break;
-
-            case 'feedback_item':
-                $response = [
+                ]
+            ],
+            'feedback_item' => [
+                [
                     'id' => '1',
                     'feedback' => '1',
                     'name' => 'test_name',
                     'presentation' => 'r>>>>>0#### incorrect|1#### correct',
                     'typ' => 'multichoicerated',
                     'template' => '1'
-                ];
-                break;
-
-            case 'feedback_template':
-                $response = [
+                ]
+            ],
+            'feedback_template' => [
+                [
                     'id' => '1',
                     'course' => '1',
                     'name' => 'test_name'
-                ];
-                break;
-
-            case 'course':
-                $response = [
+                ]
+            ],
+            'course' => [
+                [
                     'id' => '1',
                     'category' => '1',
                     'fullname' => 'test_name',
@@ -299,11 +296,15 @@ class TestRepository extends MoodleRepository {
                     'lang' => 'en',
                     'timecreated' => 1433946702,
                     'timemodified' => 1433946702,
-                ];
-                break;
+                ]
+            ],
+        }
 
-            default:
-                break;
+        if (isset($fakeMoodleDatabase[$type][$index])) {
+            $response = $fakeMoodleDatabase[$type][$index];
+        } else {
+            $response = $fakeMoodleDatabase[$type][0];
+            $response['id'] = $index;
         }
 
         // Required for assertRecord in EventTest.php to pass, but what's the purpose of including and testing this? 
@@ -320,11 +321,8 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecords($type, array $query) {
-        $record1 = $this->readStoreRecord($type, $query);
-        $record2 = $this->readStoreRecord($type, $query);
-        $record2->id = '2';
-        $record2->questionid = '1';
-        $record2->sequencenumber = '2';
+        $record1 = $this->readStoreRecord($type, $query, 0);
+        $record2 = $this->readStoreRecord($type, $query, 1);
         return [
             "1" => $record1,
             "2" => $record2
