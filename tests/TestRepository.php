@@ -112,7 +112,7 @@ class TestRepository extends MoodleRepository {
             case 'scorm':
                 $response = [
                     'id' => '1',
-                    'course' => '1'
+                    'course' => '1',
                     'name' => 'test_name',
                     'timemodified' => 1433946702,
                 ];
