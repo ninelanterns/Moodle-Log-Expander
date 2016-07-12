@@ -320,7 +320,7 @@ class TestRepository extends MoodleRepository {
             ],
         ];*/
 
-        $fakeMoodleDatabase = json_decode(file_get_contents("fakeDB.json"), true);
+        $fakeMoodleDatabase = json_decode(file_get_contents(__DIR__ ."/fakeDB.json"), true);
 
         if (isset($fakeMoodleDatabase[$type][$index])) {
             $response = $fakeMoodleDatabase[$type][$index];
