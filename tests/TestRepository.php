@@ -11,7 +11,7 @@ class TestRepository extends MoodleRepository {
      */
     protected function readStoreRecord($type, array $query, $index = 0) {
 
-        $fakeMoodleDatabase = [
+        /*$fakeMoodleDatabase = [
             'user' => [
                 [
                     'id' => '1',
@@ -318,7 +318,9 @@ class TestRepository extends MoodleRepository {
                     'timemodified' => 1433946702,
                 ]
             ],
-        ];
+        ];*/
+
+        $fakeMoodleDatabase = json_decode(file_get_contents("fakeDB.json"), true);
 
         if (isset($fakeMoodleDatabase[$type][$index])) {
             $response = $fakeMoodleDatabase[$type][$index];
