@@ -148,7 +148,6 @@ class Repository extends PhpObj {
                 $questions[$question->id] = $question;
             }
             catch (\Exception $e) {
-                var_dump($e);
                 // Question not found; maybe it was deleted since the event. 
                 // Don't add the question to the list, but also don't block the attempt event.
             }
