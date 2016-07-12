@@ -250,8 +250,7 @@
             "id": "1",
             "assignment": "1",
             "grade": "1",
-            "commenttext": "
-test comment<\/p>"
+            "commenttext": "<p>test comment</p>"
         }
     ],
     "feedback": [
