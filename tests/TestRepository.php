@@ -49,6 +49,17 @@ class TestRepository extends MoodleRepository {
             }
         }
 
+        // If no matching records found, try to create some!
+        if (count($matchingRecords) == 0) {
+            foreach ($records as $record) {
+                $record['type'] = 'object'; 
+                foreach ($query as $key => $value) {
+                    $record[$key] = $value;
+                }
+                $matchingRecords[$record['id']] = (object) $record;
+            }
+        }
+
         // Always return at least 2 records.
         if (count($matchingRecords) == 1) {
             $matchingRecords['2'] = $matchingRecords['1'];
