@@ -1,5 +1,6 @@
 <?php namespace LogExpander\Tests;
 use \LogExpander\Repository as MoodleRepository;
+use \stdClass as PhpObj;
 
 class TestRepository extends MoodleRepository {
 
