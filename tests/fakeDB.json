@@ -203,7 +203,8 @@
             "variant": "1",
             "rightanswer": "test answer",
             "responsesummary": "test answer",
-            "timemodified": 1433946702
+            "timemodified": 1433946702,
+            "questionusageid": "1"
         },
         {
             "id": "2",
@@ -211,7 +212,8 @@
             "variant": "1",
             "rightanswer": "test answer",
             "responsesummary": "test answer",
-            "timemodified": 1433946702
+            "timemodified": 1433946702,
+            "questionusageid": "1"
         }
     ],
     "question_attempt_steps": [
