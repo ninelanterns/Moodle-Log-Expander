@@ -6,6 +6,7 @@ class TestRepository extends MoodleRepository {
     protected $fakeMoodleDatabase;
 
     function __construct() {
+        parent::__construct();
         $file = file_get_contents(__DIR__ ."/fakeDB.json");
         $this->fakeMoodleDatabase = json_decode($file, true);
    }
