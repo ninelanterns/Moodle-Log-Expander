@@ -3,7 +3,12 @@ use \LogExpander\Repository as MoodleRepository;
 
 class TestRepository extends MoodleRepository {
 
-    protected $fakeMoodleDatabase = json_decode(file_get_contents(__DIR__ ."/fakeDB.json"), true);
+    protected $fakeMoodleDatabase;
+
+    function __construct() {
+        $file = file_get_contents(__DIR__ ."/fakeDB.json");
+        $this->fakeMoodleDatabase = json_decode($file, true);
+   }
 
     /**
      * Reads an object from the store with the given id.
