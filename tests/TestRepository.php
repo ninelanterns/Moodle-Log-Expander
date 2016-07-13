@@ -20,7 +20,11 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecord($type, array $query, $index = 0) {
-        return reset($this->readStoreRecords($type, $query));
+        $records = $this->readStoreRecords($type, $query);
+        if (is_array($records)) {
+            return reset($records);
+        }
+        return $records;
     }
 
     /**
