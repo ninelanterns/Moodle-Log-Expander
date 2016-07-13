@@ -32,8 +32,8 @@ class AttemptEventTest extends EventTest {
 
     protected function assertQuestionAttempts($output) {
         $this->assertEquals("1", $output["1"]->id);
-        $this->assertEquals("1", $output["1"]->steps["2"]->id);
-        $this->assertEquals("1", $output["1"]->steps["1"]->data["2"]->id);
+        $this->assertEquals("2", $output["1"]->steps["2"]->id);
+        $this->assertEquals("2", $output["1"]->steps["1"]->data["2"]->id);
     }
 
     protected function assertQuestions($output) {
