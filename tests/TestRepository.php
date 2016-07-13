@@ -62,8 +62,9 @@ class TestRepository extends MoodleRepository {
 
         // Always return at least 2 records.
         if (count($matchingRecords) == 1) {
-            $matchingRecords['2'] = $matchingRecords['1'];
-            $matchingRecords['2']->id = strval(intval($matchingRecords['1']->id) + 1);
+            $newRecord = reset($matchingRecords);
+            $newRecord->id = strval(intval($newRecord->id) + 1);
+            array_push($matchingRecords, $newRecord)
         }
 
         return $matchingRecords;
