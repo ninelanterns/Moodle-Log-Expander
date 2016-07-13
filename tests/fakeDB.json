@@ -246,6 +246,46 @@
             "value": "1"
         }
     ],
+    "question_numerical": [
+        {
+            "id": "1"
+        }
+    ],
+    "question_numerical_options": [
+        {
+            "id": "1"
+        }
+    ],
+    "question_numerical_units": [
+        {
+            "id": "1"
+        }
+    ],
+    "qtype_match_options": [
+        {
+            "id": "1"
+        }
+    ],
+    "qtype_match_subquestions": [
+        {
+            "id": "1"
+        }
+    ],
+    "question_calculated": [
+        {
+            "id": "1"
+        }
+    ],
+    "question_calculated_options": [
+        {
+            "id": "1"
+        }
+    ],
+    "qtype_shortanswer_options": [
+        {
+            "id": "1"
+        }
+    ],
     "quiz_slots": [
         {
             "id": "1",
