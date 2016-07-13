@@ -43,16 +43,7 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecords($type, array $query) {
-        $record1 = $this->readStoreRecord($type, $query);
-        $record2 = $this->readStoreRecord($type, $query);
-        $record2->id = '2';
-        $record2->questionid = '1';
-        $record2->sequencenumber = '2';
-        return [
-            "1" => $record1,
-            "2" => $record2
-        ];
-/*
+
         // Return all the records available in the fake DB. 
         $count = count($this->fakeMoodleDatabase[$type]);
 
@@ -67,7 +58,7 @@ class TestRepository extends MoodleRepository {
                 $this->readStoreRecord($type, $query, $i)
             ]);
         }
-        return $records;*/
+        return $records;
     }
 
     protected function fullname($user) {
