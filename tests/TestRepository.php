@@ -55,7 +55,7 @@ class TestRepository extends MoodleRepository {
         $records = [];
         for ($i=0; $i < $count; $i++) { 
             array_push($records, [
-                strval($i + 1) => $this->readStoreRecord($type, $query, $i)
+                $this->readStoreRecord($type, $query, $i)
             ]);
         }
         return $records;
