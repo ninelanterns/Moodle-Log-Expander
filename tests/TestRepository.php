@@ -64,7 +64,7 @@ class TestRepository extends MoodleRepository {
         if (count($matchingRecords) == 1) {
             $newRecord = reset($matchingRecords);
             $newRecord->id = strval(intval($newRecord->id) + 1);
-            array_push($matchingRecords, $newRecord)
+            array_push($matchingRecords, $newRecord);
         }
 
         return $matchingRecords;
