@@ -339,7 +339,9 @@
             "grademin": "0.00000",
             "gradepass": "5.00000",
             "timecreated": 1433946702,
-            "timemodified": 1433946702
+            "timemodified": 1433946702,
+            "itemmodule": "quiz",
+            "iteminstance": "1"
         }
     ],
     "assignfeedback_comments": [
@@ -362,7 +364,8 @@
         {
             "id": "1",
             "course_id": "1",
-            "item": "1"
+            "item": "1",
+            "completed": "1"
         }
     ],
     "feedback_item": [
