@@ -20,19 +20,7 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecord($type, array $query, $index = 0) {
-
-        $response;
-        if (isset($this->fakeMoodleDatabase[$type][$index])) {
-            $response = $this->fakeMoodleDatabase[$type][$index];
-        } else {
-            $response = $this->fakeMoodleDatabase[$type][0];
-            $response['id'] = strval($index + 1);
-        }
-
-        // Required for assertRecord in EventTest.php to pass, but what's the purpose of including and testing this? 
-        $response['type'] = 'object';
-
-        return (object) $response;
+        return reset($this->readStoreRecords($type, array $query))
     }
 
     /**
@@ -44,19 +32,26 @@ class TestRepository extends MoodleRepository {
      */
     protected function readStoreRecords($type, array $query) {
 
-        // Return all the records available in the fake DB. 
-        $count = count($this->fakeMoodleDatabase[$type]);
+
+        $records = $this->fakeMoodleDatabase[$type];
+        $matchingRecords = [];
+
+        foreach ($records as $record) {
+            foreach ($query as $key => $value) {
+                if ($record[$key] === $value) {
+                    $record['type'] = 'object'; // Required for assertRecord in EventTest.php to pass, but what's the purpose of including and testing this? 
+                    $matchingRecords[$record['id']] = (object) $record;
+                }
+            }
+        }
 
         // Always return at least 2 records.
-        if ($count == 1) {
-            $count = 2;
+        if (count($matchingRecords) == 1) {
+            $matchingRecords['2'] = $matchingRecords['1'];
+            $matchingRecords['2']->id = strval(intval($matchingRecords['1']->id) + 1);
         }
 
-        $records = [];
-        for ($i=0; $i < $count; $i++) { 
-            $records[strval($i+1)] = $this->readStoreRecord($type, $query, $i);
-        }
-        return $records;
+        return $matchingRecords;
     }
 
     protected function fullname($user) {
