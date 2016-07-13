@@ -1,7 +1,17 @@
 <?php namespace LogExpander\Tests;
 use \LogExpander\Repository as MoodleRepository;
+use \stdClass as PhpObj;
 
 class TestRepository extends MoodleRepository {
+
+    protected $fakeMoodleDatabase;
+
+    function __construct($store, PhpObj $cfg) {
+        parent::__construct($store, $cfg);
+        $file = file_get_contents(__DIR__ ."/fakeDB.json");
+        $this->fakeMoodleDatabase = json_decode($file, true);
+   }
+
     /**
      * Reads an object from the store with the given id.
      * @param string $type
@@ -11,14 +21,11 @@ class TestRepository extends MoodleRepository {
      */
     protected function readStoreRecord($type, array $query, $index = 0) {
 
-        $file = file_get_contents(__DIR__ ."/fakeDB.json");
-
-        $fakeMoodleDatabase = json_decode($file, true);
-
-        if (isset($fakeMoodleDatabase[$type][$index])) {
-            $response = $fakeMoodleDatabase[$type][$index];
+        $response;
+        if (isset($this->fakeMoodleDatabase[$type][$index])) {
+            $response = $this->fakeMoodleDatabase[$type][$index];
         } else {
-            $response = $fakeMoodleDatabase[$type][0];
+            $response = $this->fakeMoodleDatabase[$type][0];
             $response['id'] = strval($index + 1);
         }
 
@@ -36,12 +43,22 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecords($type, array $query) {
-        $record1 = $this->readStoreRecord($type, $query, 0);
-        $record2 = $this->readStoreRecord($type, $query, 1);
-        return [
-            "1" => $record1,
-            "2" => $record2
-        ];
+
+        // Return all the records available in the fake DB. 
+        $count = count($this->fakeMoodleDatabase[$type]);
+
+        // Always return at least 2 records.
+        if ($count == 1) {
+            $count = 2;
+        }
+
+        $records = [];
+        for ($i=0; $i < $count; $i++) { 
+            array_push($records, [
+                strval($i) => $this->readStoreRecord($type, $query, $i)
+            ]);
+        }
+        return $records;
     }
 
     protected function fullname($user) {

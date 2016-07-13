@@ -158,6 +158,42 @@
             "qtype": "multichoice",
             "timecreated": 1433946702,
             "timemodified": 1433946702
+        },
+        {
+            "id": "2",
+            "category": "1",
+            "name": "test_name",
+            "questiontext": "test question",
+            "qtype": "numerical",
+            "timecreated": 1433946702,
+            "timemodified": 1433946702
+        },
+        {
+            "id": "3",
+            "category": "1",
+            "name": "test_name",
+            "questiontext": "test question",
+            "qtype": "match",
+            "timecreated": 1433946702,
+            "timemodified": 1433946702
+        },
+        {
+            "id": "4",
+            "category": "1",
+            "name": "test_name",
+            "questiontext": "test question",
+            "qtype": "calculated",
+            "timecreated": 1433946702,
+            "timemodified": 1433946702
+        },
+        {
+            "id": "5",
+            "category": "1",
+            "name": "test_name",
+            "questiontext": "test question",
+            "qtype": "shortanswer",
+            "timecreated": 1433946702,
+            "timemodified": 1433946702
         }
     ],
     "question_attempts": [
