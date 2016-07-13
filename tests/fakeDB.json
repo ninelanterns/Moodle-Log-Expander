@@ -240,12 +240,14 @@
         {
             "id": "1",
             "name": "test_name",
-            "value": "2"
+            "value": "2",
+            "attemptstepid": "1"
         },
         {
             "id": "2",
             "name": "test_name",
-            "value": "1"
+            "value": "1",
+            "attemptstepid": "2"
         }
     ],
     "question_numerical": [

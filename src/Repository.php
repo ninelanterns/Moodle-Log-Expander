@@ -202,12 +202,14 @@ class Repository extends PhpObj {
      */
     public function readFeedbackQuestions($id) {
         $questions = $this->readStoreRecords('feedback_item', ['feedback' => $id]);
+        $expandedQuestions = [];
         foreach ($questions as $index => $question) {
-            $question->template = $this->readStoreRecord('feedback_template', ['id' => $question->template]);
-            $question->url = $this->cfg->wwwroot . '/mod/feedback/edit_item.php?id='.$question->id;
-            $questions[$index] = $question;
+            $expandedQuestion = $question;
+            $expandedQuestion->template = $this->readStoreRecord('feedback_template', ['id' => $question->template]);
+            $expandedQuestion->url = $this->cfg->wwwroot . '/mod/feedback/edit_item.php?id='.$question->id;
+            array_push($expandedQuestions, $expandedQuestion)
         }
-        return $questions;
+        return $expandedQuestions;
     }
 
     /**
