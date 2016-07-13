@@ -2,6 +2,14 @@
 use \LogExpander\Repository as MoodleRepository;
 
 class TestRepository extends MoodleRepository {
+
+    protected $fakeMoodleDatabase;
+
+    function __construct() {
+        $file = file_get_contents(__DIR__ ."/fakeDB.json");
+        $this->fakeMoodleDatabase = json_decode($file, true);
+   }
+
     /**
      * Reads an object from the store with the given id.
      * @param string $type
@@ -11,14 +19,11 @@ class TestRepository extends MoodleRepository {
      */
     protected function readStoreRecord($type, array $query, $index = 0) {
 
-        $file = file_get_contents(__DIR__ ."/fakeDB.json");
-
-        $fakeMoodleDatabase = json_decode($file, true);
-
-        if (isset($fakeMoodleDatabase[$type][$index])) {
-            $response = $fakeMoodleDatabase[$type][$index];
+        $response;
+        if (isset($this->fakeMoodleDatabase[$type][$index])) {
+            $response = $this->fakeMoodleDatabase[$type][$index];
         } else {
-            $response = $fakeMoodleDatabase[$type][0];
+            $response = $this->fakeMoodleDatabase[$type][0];
             $response['id'] = strval($index + 1);
         }
 
