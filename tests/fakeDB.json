@@ -295,7 +295,7 @@
     "qtype_shortanswer_options": [
         {
             "id": "1",
-            "question": "5"
+            "questionid": "5"
         }
     ],
     "quiz_slots": [
