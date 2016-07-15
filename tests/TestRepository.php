@@ -53,10 +53,11 @@ class TestRepository extends MoodleRepository {
         if (count($matchingRecords) == 0) {
             foreach ($records as $record) {
                 $record['type'] = 'object'; 
+                $id = $record['id'];
                 foreach ($query as $key => $value) {
                     $record[$key] = $value;
                 }
-                $matchingRecords[$record['id']] = (object) $record;
+                $matchingRecords[$id] = (object) $record;
             }
         }
 
