@@ -36,7 +36,6 @@ class TestRepository extends MoodleRepository {
      */
     protected function readStoreRecords($type, array $query) {
 
-
         $records = $this->fakeMoodleDatabase[$type];
         $matchingRecords = [];
 

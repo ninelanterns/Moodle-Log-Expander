@@ -117,6 +117,7 @@ class Repository extends PhpObj {
     public function readQuestions($quizId) {
         $quizSlots = $this->readStoreRecords('quiz_slots', ['quizid' => $quizId]);
         $questions = [];
+        var_dump($quizSlots);
         foreach ($quizSlots as $index => $quizSlot) {
             try {
                 $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
@@ -144,6 +145,8 @@ class Repository extends PhpObj {
                         'options' => $this->readStoreRecord('qtype_shortanswer_options', ['questionid' => $question->id])
                     ];
                 }
+
+                var_dump($question);
 
                 $questions[$question->id] = $question;
             }
