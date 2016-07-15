@@ -271,13 +271,13 @@
     "qtype_match_options": [
         {
             "id": "1",
-            "question": "3"
+            "questionid": "3"
         }
     ],
     "qtype_match_subquestions": [
         {
             "id": "1",
-            "question": "3"
+            "questionid": "3"
         }
     ],
     "question_calculated": [
