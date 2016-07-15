@@ -37,7 +37,7 @@ class TestRepository extends MoodleRepository {
     protected function readStoreRecords($type, array $query) {
 
 
-        $records = $this->fakeMoodleDatabase[$type];
+        $records = clone($this->fakeMoodleDatabase[$type]);
         $matchingRecords = [];
 
         foreach ($records as $record) {
@@ -63,7 +63,7 @@ class TestRepository extends MoodleRepository {
 
         // Always return at least 2 records.
         if (count($matchingRecords) == 1) {
-            $newRecord = reset($matchingRecords);
+            $newRecord = clone(reset($matchingRecords));
             $newRecord->id = strval(intval($newRecord->id) + 1);
             array_push($matchingRecords, $newRecord);
         }
