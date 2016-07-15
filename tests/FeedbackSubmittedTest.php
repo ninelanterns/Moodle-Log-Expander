@@ -22,8 +22,8 @@ class FeedbackSubittedTest extends EventTest {
         parent::assertOutput($input, $output);
         $this->assertModule(1, $output['module'], 'feedback');
         $this->assertEquals('test_name', $output['questions'][1]->name);
+        $this->assertEquals('testing',var_export($output['questions']));
         $this->assertEquals('http://www.example.com/mod/feedback/edit_item.php?id=1', $output['questions']['1']->url);
-        var_dump($output['questions']);
         $this->assertEquals('test_name', $output['questions'][1]->template->name);
         $this->assertEquals('http://www.example.com/mod/feedback/complete.php?id=1', $output['attempt']->url);
         $this->assertEquals('1', $output['attempt']->responses['1']->id);
