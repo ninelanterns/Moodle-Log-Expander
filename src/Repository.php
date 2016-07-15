@@ -118,7 +118,7 @@ class Repository extends PhpObj {
         $quizSlots = $this->readStoreRecords('quiz_slots', ['quizid' => $quizId]);
         $questions = [];
         foreach ($quizSlots as $index => $quizSlot) {
-            //try {
+            try {
                 $question = $this->readStoreRecord('question', ['id' => $quizSlot->questionid]);
                 $question->answers = $this->readStoreRecords('question_answers', ['question' => $question->id]);
                 $question->url = $this->cfg->wwwroot . '/mod/question/question.php?id='.$question->id;
@@ -146,11 +146,11 @@ class Repository extends PhpObj {
                 }
 
                 $questions[$question->id] = $question;
-            //}
-            //catch (\Exception $e) {
+            }
+            catch (\Exception $e) {
                 // Question not found; maybe it was deleted since the event. 
                 // Don't add the question to the list, but also don't block the attempt event.
-            //}
+            }
         }
 
         return $questions;
