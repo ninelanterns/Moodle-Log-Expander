@@ -252,42 +252,50 @@
     ],
     "question_numerical": [
         {
-            "id": "1"
+            "id": "1",
+            "question": "2"
         }
     ],
     "question_numerical_options": [
         {
-            "id": "1"
+            "id": "1",
+            "question": "2"
         }
     ],
     "question_numerical_units": [
         {
-            "id": "1"
+            "id": "1",
+            "question": "2"
         }
     ],
     "qtype_match_options": [
         {
-            "id": "1"
+            "id": "1",
+            "question": "3"
         }
     ],
     "qtype_match_subquestions": [
         {
-            "id": "1"
+            "id": "1",
+            "question": "3"
         }
     ],
     "question_calculated": [
         {
-            "id": "1"
+            "id": "1",
+            "question": "4"
         }
     ],
     "question_calculated_options": [
         {
-            "id": "1"
+            "id": "1",
+            "question": "4"
         }
     ],
     "qtype_shortanswer_options": [
         {
-            "id": "1"
+            "id": "1",
+            "question": "5"
         }
     ],
     "quiz_slots": [
