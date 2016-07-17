@@ -125,7 +125,7 @@ class Repository extends PhpObj {
                 $questions[$question->id] = $question;
             }
             catch (\Exception $e) {
-                // Question not found; maybe it was deleted since the event. 
+                // Question not found; maybe it was deleted since the event.
                 // Don't add the question to the list, but also don't block the attempt event.
             }
         }
@@ -150,15 +150,15 @@ class Repository extends PhpObj {
      */
     public function readGradeComment($grade_id, $assignment_id) {
         $model = $this->readStoreRecord(
-            'assignfeedback_comments', 
+            'assignfeedback_comments',
             [
-                'assignment' => $assignment_id, 
+                'assignment' => $assignment_id,
                 'grade' => $grade_id
             ]
         );
         return $model;
     }
-    
+
     /**
      * Reads a feedback attempt from the store with the given id.
      * @param String $id
@@ -267,5 +267,18 @@ class Repository extends PhpObj {
         }
 
         return $signups;
+    }
+
+    /**
+     * Reads Scorm tracking data
+     * @return PhpObj
+     */
+    public function readScormScoesTrack($userid, $scormid, $scoid, $attempt) {
+        $scorm_tracking = $this->readStoreRecords('scorm_scoes_track', [
+                                                      'userid' => $userid,
+                                                      'scormid'=> $scormid,
+                                                      'scoid' => $scoid,
+                                                      'attempt' => $attempt]);
+        return $scorm_tracking;
     }
 }

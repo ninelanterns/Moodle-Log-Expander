@@ -296,5 +296,24 @@
             "timecreated": 1433946702,
             "timemodified": 1433946702
         }
+    ],
+    "scorm_scoes_track": [
+        {
+            "id": "1",
+            "userid": "1",
+            "scormid": "1",
+            "scoid": "1",
+            "attempt": "1",
+            "element": "cmi.core.lesson_status",
+            "value": "status"
+        }
+    ],
+    "scorm": [
+        {
+            "id": "1",
+            "course": "1",
+            "name": "scorm_name",
+            "scormtype": "scorm_name"
+        }
     ]
 }
