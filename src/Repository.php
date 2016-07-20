@@ -274,11 +274,23 @@ class Repository extends PhpObj {
      * @return PhpObj
      */
     public function readScormScoesTrack($userid, $scormid, $scoid, $attempt) {
+        $scorm_tracking_values = array();
         $scorm_tracking = $this->readStoreRecords('scorm_scoes_track', [
                                                       'userid' => $userid,
                                                       'scormid'=> $scormid,
                                                       'scoid' => $scoid,
                                                       'attempt' => $attempt]);
-        return $scorm_tracking;
+
+        foreach($scorm_tracking as $st) {
+            if($st->element == 'cmi.core.score.min') {
+                $scorm_tracking_values['scoremin'] = $st->value;
+            } else if ($st->element == 'cmi.core.score.max') {
+                $scorm_tracking_values['scoremax'] = $st->value;
+            } else if ($st->element == 'cmi.core.lesson_status') {
+                $scorm_tracking_values['status'] = $st->value;
+            }
+        }
+
+        return $scorm_tracking_values;
     }
 }

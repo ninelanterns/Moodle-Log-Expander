@@ -20,16 +20,16 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecord($type, array $query, $index = 0) {
-
         $response;
         if (isset($this->fakeMoodleDatabase[$type][$index])) {
             $response = $this->fakeMoodleDatabase[$type][$index];
         } else {
-            $response = $this->fakeMoodleDatabase[$type][0];
-            $response['id'] = strval($index + 1);
+            //$response = $this->fakeMoodleDatabase[$type][0];
+            //$response['id'] = strval($index + 1);
+            return NULL;
         }
 
-        // Required for assertRecord in EventTest.php to pass, but what's the purpose of including and testing this? 
+        // Required for assertRecord in EventTest.php to pass, but what's the purpose of including and testing this?
         $response['type'] = 'object';
 
         return (object) $response;
@@ -43,12 +43,16 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecords($type, array $query) {
-        $record1 = $this->readStoreRecord($type, $query, 0);
-        $record2 = $this->readStoreRecord($type, $query, 1);
-        return [
-            "1" => $record1,
-            "2" => $record2
-        ];
+        $record;
+        $records = array();
+        $index = 0;
+
+        while ($record = $this->readStoreRecord($type, $query, $index)) {
+            array_push($records, $record);
+            $index+=1;
+        }
+
+        return $records;
     }
 
     protected function fullname($user) {

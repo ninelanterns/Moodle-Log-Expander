@@ -297,6 +297,28 @@
             "timemodified": 1433946702
         }
     ],
+    "scorm": [
+        {
+            "id": "1",
+            "course": "1",
+            "name": "scorm_name",
+            "scormtype": "scorm_name"
+        }
+    ],
+    "scorm_scoes": [
+        {
+            "id": "1",
+            "scorm": "1",
+            "manifest": "Course_ID1",
+            "organization": "Course_ID1_ORG",
+            "parent": "Course_ID1_ORG",
+            "identifier": "SCO_ID1",
+            "launch": "index_scorm.html",
+            "scormtype": "sco",
+            "title": "Course Object title",
+            "sortorder": "1"
+        }
+    ],
     "scorm_scoes_track": [
         {
             "id": "1",
@@ -306,14 +328,33 @@
             "attempt": "1",
             "element": "cmi.core.lesson_status",
             "value": "status"
-        }
-    ],
-    "scorm": [
+        },
         {
-            "id": "1",
-            "course": "1",
-            "name": "scorm_name",
-            "scormtype": "scorm_name"
+            "id": "2",
+            "userid": "1",
+            "scormid": "1",
+            "scoid": "1",
+            "attempt": "1",
+            "element": "cmi.core.score.max",
+            "value": "100"
+        },
+        {
+            "id": "3",
+            "userid": "1",
+            "scormid": "1",
+            "scoid": "1",
+            "attempt": "1",
+            "element": "cmi.core.score.min",
+            "value": "0"
+        },
+        {
+            "id": "4",
+            "userid": "1",
+            "scormid": "1",
+            "scoid": "1",
+            "attempt": "1",
+            "element": "cmi.core.score.raw",
+            "value": "100"
         }
     ]
 }
