@@ -121,20 +121,6 @@
             "timemodified": 1433946702
         }
     ],
-    "scorm": [
-        {
-            "id": "1",
-            "course": "1",
-            "name": "test_name",
-            "timemodified": 1433946702
-        }
-    ],
-    "scorm_scoes": [
-        {
-            "id": "1",
-            "scorm": "1"
-        }
-    ],
     "modules": [
         {
             "id": "1",

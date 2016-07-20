@@ -15,12 +15,14 @@ class ScormSubmittedTest extends EventTest {
             'objecttable' => 'scorm_scoes_track',
             'objectid' => 1,
             'eventname' => '\mod_scorm\event\scoreraw_submitted',
-            'other' => 'a:3:{s:9:"attemptid";i:2;s:10:"cmielement";s:18:"cmi.core.score.raw";s:8:"cmivalue";s:1:"0";}',
+            'other' => 'a:3:{s:9:"attemptid";i:1;s:10:"cmielement";s:18:"cmi.core.score.raw";s:8:"cmivalue";s:1:"0";}',
         ]);
     }
 
     protected function assertOutput($input, $output) {
         parent::assertOutput($input, $output);
+        echo(print_r($output, true));
+        //$this->assertEquals("1", $output["1"]->id);
         $this->assertModule(1, $output['module'], 'scorm');
         $this->assertScorm(1, $output['scorm_scoes_track']);
     }
