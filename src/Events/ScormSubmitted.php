@@ -8,19 +8,19 @@ class ScormSubmitted extends Event {
      * @override Event
      */
     public function read(array $opts) {
-        $cmi_unserialized = unserialize($opts['other']);
+        $cmiUnserialized = unserialize($opts['other']);
         $scoid = $opts['contextinstanceid'];
         $scormid = $opts['objectid'];
         $attempt = $cmi_unserialized['attemptid'];
-        $scorm_scoes_track = $this->repo->readScormScoesTrack($opts['userid'],
+        $scormScoesTrack = $this->repo->readScormScoesTrack($opts['userid'],
                                                               $scormid,
                                                               $scoid,
                                                               $attempt);
         return array_merge(parent::read($opts), [
             'module' => $this->repo->readModule($scormid, 'scorm'),
-            'scorm_scoes_track' => $scorm_scoes_track,
+            'scorm_scoes_track' => $scormScoesTrack,
             'scorm_scoes' => $this->repo->readModule($scoid, 'scorm_scoes'),
-            'cmi_data' => $cmi_unserialized,
+            'cmi_data' => $cmiUnserialized,
         ]);
     }
 }

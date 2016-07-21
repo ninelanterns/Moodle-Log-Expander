@@ -22,20 +22,19 @@ class ScormSubmittedTest extends EventTest {
 
     protected function assertOutput($input, $output) {
         parent::assertOutput($input, $output);
-        echo(print_r($output, true));
         $this->assertModule(1, $output['module'], 'scorm');
         $this->assertEquals(1, $output['scorm_scoes']->id);
-        $this->assertScormScoesTrack($input, $output);
-        $this->assertCmiData($input, $output);
+        $this->assertScormScoesTrack($output);
+        $this->assertCmiData($output);
     }
 
-    protected function assertScormScoesTrack($input, $output) {
+    protected function assertScormScoesTrack($output) {
         $this->assertEquals('status', $output['scorm_scoes_track']['status']);
         $this->assertEquals(100, $output['scorm_scoes_track']['scoremax']);
         $this->assertEquals(0, $output['scorm_scoes_track']['scoremin']);
     }
 
-    protected function assertCmiData($input, $output) {
+    protected function assertCmiData($output) {
         $this->assertEquals(1, $output['cmi_data']['attemptid']);
         $this->assertEquals('cmi.core.score.raw', $output['cmi_data']['cmielement']);
         $this->assertEquals(0, $output['cmi_data']['cmivalue']);
