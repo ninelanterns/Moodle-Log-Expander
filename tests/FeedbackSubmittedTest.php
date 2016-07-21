@@ -13,7 +13,7 @@ class FeedbackSubittedTest extends EventTest {
     protected function constructInput() {
         return array_merge(parent::constructInput(), [
             'objecttable' => 'feedback_completed',
-            'objectid' => 1,
+            'objectid' => '1',
             'eventname' => '\mod_feedback\event\response_submitted',
         ]);
     }
