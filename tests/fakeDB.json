@@ -158,6 +158,42 @@
             "qtype": "multichoice",
             "timecreated": 1433946702,
             "timemodified": 1433946702
+        },
+        {
+            "id": "2",
+            "category": "1",
+            "name": "test_name",
+            "questiontext": "test question",
+            "qtype": "numerical",
+            "timecreated": 1433946702,
+            "timemodified": 1433946702
+        },
+        {
+            "id": "3",
+            "category": "1",
+            "name": "test_name",
+            "questiontext": "test question",
+            "qtype": "match",
+            "timecreated": 1433946702,
+            "timemodified": 1433946702
+        },
+        {
+            "id": "4",
+            "category": "1",
+            "name": "test_name",
+            "questiontext": "test question",
+            "qtype": "calculated",
+            "timecreated": 1433946702,
+            "timemodified": 1433946702
+        },
+        {
+            "id": "5",
+            "category": "1",
+            "name": "test_name",
+            "questiontext": "test question",
+            "qtype": "shortanswer",
+            "timecreated": 1433946702,
+            "timemodified": 1433946702
         }
     ],
     "question_attempts": [
@@ -167,7 +203,8 @@
             "variant": "1",
             "rightanswer": "test answer",
             "responsesummary": "test answer",
-            "timemodified": 1433946702
+            "timemodified": 1433946702,
+            "questionusageid": "1"
         },
         {
             "id": "2",
@@ -175,7 +212,8 @@
             "variant": "1",
             "rightanswer": "test answer",
             "responsesummary": "test answer",
-            "timemodified": 1433946702
+            "timemodified": 1433946702,
+            "questionusageid": "1"
         }
     ],
     "question_attempt_steps": [
@@ -202,12 +240,62 @@
         {
             "id": "1",
             "name": "test_name",
-            "value": "2"
+            "value": "2",
+            "attemptstepid": "1"
         },
         {
             "id": "2",
             "name": "test_name",
-            "value": "1"
+            "value": "1",
+            "attemptstepid": "2"
+        }
+    ],
+    "question_numerical": [
+        {
+            "id": "1",
+            "question": "2"
+        }
+    ],
+    "question_numerical_options": [
+        {
+            "id": "1",
+            "question": "2"
+        }
+    ],
+    "question_numerical_units": [
+        {
+            "id": "1",
+            "question": "2"
+        }
+    ],
+    "qtype_match_options": [
+        {
+            "id": "1",
+            "questionid": "3"
+        }
+    ],
+    "qtype_match_subquestions": [
+        {
+            "id": "1",
+            "questionid": "3"
+        }
+    ],
+    "question_calculated": [
+        {
+            "id": "1",
+            "question": "4"
+        }
+    ],
+    "question_calculated_options": [
+        {
+            "id": "1",
+            "question": "4"
+        }
+    ],
+    "qtype_shortanswer_options": [
+        {
+            "id": "1",
+            "questionid": "5"
         }
     ],
     "quiz_slots": [
@@ -223,6 +311,27 @@
             "slot": "2",
             "quizid": "1",
             "questionid": "2",
+            "maxmark": "5.00000"
+        },
+        {
+            "id": "3",
+            "slot": "3",
+            "quizid": "1",
+            "questionid": "3",
+            "maxmark": "5.00000"
+        },
+        {
+            "id": "4",
+            "slot": "4",
+            "quizid": "1",
+            "questionid": "4",
+            "maxmark": "5.00000"
+        },
+        {
+            "id": "5",
+            "slot": "5",
+            "quizid": "1",
+            "questionid": "5",
             "maxmark": "5.00000"
         }
     ],
@@ -242,7 +351,9 @@
             "grademin": "0.00000",
             "gradepass": "5.00000",
             "timecreated": 1433946702,
-            "timemodified": 1433946702
+            "timemodified": 1433946702,
+            "itemmodule": "quiz",
+            "iteminstance": "1"
         }
     ],
     "assignfeedback_comments": [
@@ -265,7 +376,8 @@
         {
             "id": "1",
             "course_id": "1",
-            "item": "1"
+            "item": "1",
+            "completed": "1"
         }
     ],
     "feedback_item": [

@@ -20,19 +20,11 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecord($type, array $query, $index = 0) {
-
-        $response;
-        if (isset($this->fakeMoodleDatabase[$type][$index])) {
-            $response = $this->fakeMoodleDatabase[$type][$index];
-        } else {
-            $response = $this->fakeMoodleDatabase[$type][0];
-            $response['id'] = strval($index + 1);
+        $records = $this->readStoreRecords($type, $query);
+        if (is_array($records)) {
+            return reset($records);
         }
-
-        // Required for assertRecord in EventTest.php to pass, but what's the purpose of including and testing this? 
-        $response['type'] = 'object';
-
-        return (object) $response;
+        return $records;
     }
 
     /**
@@ -43,12 +35,40 @@ class TestRepository extends MoodleRepository {
      * @override MoodleRepository
      */
     protected function readStoreRecords($type, array $query) {
-        $record1 = $this->readStoreRecord($type, $query, 0);
-        $record2 = $this->readStoreRecord($type, $query, 1);
-        return [
-            "1" => $record1,
-            "2" => $record2
-        ];
+
+        $records = $this->fakeMoodleDatabase[$type];
+        $matchingRecords = [];
+
+        foreach ($records as $record) {
+            foreach ($query as $key => $value) {
+                if ($record[$key] === $value) {
+                    $record['type'] = 'object'; // Required for assertRecord in EventTest.php to pass, but what's the purpose of including and testing this? 
+                    $matchingRecords[$record['id']] = (object) $record;
+                }
+            }
+        }
+
+        // If no matching records found, try to create some!
+        if (count($matchingRecords) == 0) {
+            foreach ($records as $record) {
+                $record['type'] = 'object'; 
+                $id = $record['id'];
+                foreach ($query as $key => $value) {
+                    $record[$key] = $value;
+                }
+                $matchingRecords[$id] = (object) $record;
+            }
+        }
+
+        // Always return at least 2 records.
+        if (count($matchingRecords) == 1) {
+            $newRecord = clone(reset($matchingRecords));
+            $newId = strval(intval($newRecord->id) + 1);
+            $newRecord->id = $newId;
+            $matchingRecords[$newId] = $newRecord;
+        }
+
+        return $matchingRecords;
     }
 
     protected function fullname($user) {
