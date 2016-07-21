@@ -324,4 +324,13 @@ class Repository extends PhpObj {
 
         return $trackingValues;
     }
+
+    /**
+     * Reads a face to face session
+     * @return PhpObj
+     */
+    public function readscormScoes($id) {
+        $model = $this->readObject($id, 'scorm_scoes');
+        return $model;
+    }
 }
