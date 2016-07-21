@@ -11,7 +11,7 @@ class ScormSubmitted extends Event {
         $cmiUnserialized = unserialize($opts['other']);
         $scoid = $opts['contextinstanceid'];
         $scormid = $opts['objectid'];
-        $attempt = $cmi_unserialized['attemptid'];
+        $attempt = $cmiUnserialized['attemptid'];
         $scormScoesTrack = $this->repo->readScormScoesTrack($opts['userid'],
                                                               $scormid,
                                                               $scoid,
