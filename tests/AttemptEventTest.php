@@ -27,6 +27,7 @@ class AttemptEventTest extends EventTest {
         $this->assertEquals(0, $output['grade_items']->grademin);
         $this->assertQuestionAttempts($output['attempt']->questions);
         $this->assertQuestions($output['questions']);
+
     }
 
     protected function assertQuestionAttempts($output) {
