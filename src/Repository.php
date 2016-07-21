@@ -326,7 +326,7 @@ class Repository extends PhpObj {
     }
 
     /**
-     * Reads a face to face session
+     * Reads a scorm scoes
      * @return PhpObj
      */
     public function readscormScoes($scoid) {
