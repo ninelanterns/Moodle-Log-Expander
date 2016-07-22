@@ -52,7 +52,7 @@
         "objecttable": "scorm_scoes_track",
         "objectid": 1,
         "contextinstanceid": 1,
-        "other": "a:3:{s:9:\"attemptid\";i:1;s:10:\"cmielement\";s:18:\"cmi.core.score.raw\";s:8:\"cmivalue\";s:1:\"0\";}"
+        "other": "a:3:{s:9:\"attemptid\";i:1;s:10:\"cmielement\";s:18:\"cmi.core.score.raw\";s:8:\"cmivalue\";s:3:\"100\";}"
     },
     "module": {
         "id": 1,
@@ -75,12 +75,11 @@
         "scormtype": "sco",
         "title": "Course Object title",
         "sortorder": "1",
-        "type": "object",
-        "url": "http:\/\/www.example.com\/mod\/scorm_scoes\/view.php?id=1"
+        "type": "object"
     },
     "cmi_data": {
         "attemptid": 1,
         "cmielement": "cmi.core.score.raw",
-        "cmivalue": "0"
+        "cmivalue": "100"
     }
 }

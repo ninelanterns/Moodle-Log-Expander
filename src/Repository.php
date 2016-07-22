@@ -329,7 +329,7 @@ class Repository extends PhpObj {
      * Reads a scorm scoes
      * @return PhpObj
      */
-    public function readscormScoes($scoid) {
+    public function readScormScoes($scoid) {
         $model = $this->readObject($scoid, 'scorm_scoes');
         return $model;
     }

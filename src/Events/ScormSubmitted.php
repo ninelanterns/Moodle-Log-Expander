@@ -19,7 +19,7 @@ class ScormSubmitted extends Event {
         return array_merge(parent::read($opts), [
             'module' => $this->repo->readModule($scormid, 'scorm'),
             'scorm_scoes_track' => $scormScoesTrack,
-            'scorm_scoes' => $this->repo->readscormScoes($scoid),
+            'scorm_scoes' => $this->repo->readScormScoes($scoid),
             'cmi_data' => $cmiUnserialized,
         ]);
     }
