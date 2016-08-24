@@ -41,7 +41,8 @@ class Controller extends PhpObj {
         '\mod_facetoface\event\signup_success' => 'FacetofaceEvent',
         '\mod_facetoface\event\cancel_booking' => 'FacetofaceEvent',
         '\mod_facetoface\event\take_attendance' => 'FacetofaceAttended',
-        '\core\event\course_completed'=>'CourseCompleted'
+        '\core\event\course_completed'=>'CourseCompleted',
+        '\mod_facetoface\event\session_signup' => 'FacetofaceSignup'
     ];
     /**
      * Constructs a new Controller.
