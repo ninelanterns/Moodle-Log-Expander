@@ -9,10 +9,12 @@ class FacetofaceAttendenceTaken extends FacetofaceEvent {
      */
     public function read(array $opts) {
         $other = unserialize($opts['other']);
-        $session = $this->repo->readFacetofaceSession($other['sessionid']);
+        //$session = $this->repo->readFacetofaceSession($other['sessionid']);
+        $objectid = $opts['objectid'];
+        $opts['objectid'] = $other['sessionid'];
         return array_merge(parent::read($opts), [
-            'signups' => $this->repo->readFacetofaceSessionSignups($opts['objectid'], $opts['timecreated']),
-            'session' => $session
+            'signups' => $this->repo->readFacetofaceSessionSignup($objectid),
+            //'session' => $session
         ]);
     }
 }
